@@ -15,212 +15,124 @@ import (
 	"encoding/json"
 )
 
-// Body1 struct for Body1
-type Body1 struct {
-	// udp or tcp
-	Protocol *string `json:"protocol,omitempty"`
-	// Name of PacketAccelerator
-	Name *string `json:"name,omitempty"`
-	// Destination IP, e.g. 1.2.3.4
-	DestinationIp *string `json:"destination_ip,omitempty"`
-	// Destination port, e.g. 443
-	DestinationPort *int32 `json:"destination_port,omitempty"`
+// V1CreateSipTeleport struct for V1CreateSipTeleport
+type V1CreateSipTeleport struct {
+	// Name of SIPTeleport
+	Name string `json:"name"`
+	// Destination of SIPTeleport
+	Destination string `json:"destination"`
 }
 
-// NewBody1 instantiates a new Body1 object
+// NewV1CreateSipTeleport instantiates a new V1CreateSipTeleport object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBody1() *Body1 {
-	this := Body1{}
+func NewV1CreateSipTeleport(name string, destination string) *V1CreateSipTeleport {
+	this := V1CreateSipTeleport{}
+	this.Name = name
+	this.Destination = destination
 	return &this
 }
 
-// NewBody1WithDefaults instantiates a new Body1 object
+// NewV1CreateSipTeleportWithDefaults instantiates a new V1CreateSipTeleport object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBody1WithDefaults() *Body1 {
-	this := Body1{}
+func NewV1CreateSipTeleportWithDefaults() *V1CreateSipTeleport {
+	this := V1CreateSipTeleport{}
 	return &this
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
-func (o *Body1) GetProtocol() string {
-	if o == nil || o.Protocol == nil {
+// GetName returns the Name field value
+func (o *V1CreateSipTeleport) GetName() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Protocol
+
+	return o.Name
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *Body1) GetProtocolOk() (*string, bool) {
-	if o == nil || o.Protocol == nil {
+func (o *V1CreateSipTeleport) GetNameOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Protocol, true
+	return &o.Name, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *Body1) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
-		return true
-	}
-
-	return false
+// SetName sets field value
+func (o *V1CreateSipTeleport) SetName(v string) {
+	o.Name = v
 }
 
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
-func (o *Body1) SetProtocol(v string) {
-	o.Protocol = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Body1) GetName() string {
-	if o == nil || o.Name == nil {
+// GetDestination returns the Destination field value
+func (o *V1CreateSipTeleport) GetDestination() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Destination
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetDestinationOk returns a tuple with the Destination field value
 // and a boolean to check if the value has been set.
-func (o *Body1) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+func (o *V1CreateSipTeleport) GetDestinationOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Destination, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Body1) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
+// SetDestination sets field value
+func (o *V1CreateSipTeleport) SetDestination(v string) {
+	o.Destination = v
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Body1) SetName(v string) {
-	o.Name = &v
-}
-
-// GetDestinationIp returns the DestinationIp field value if set, zero value otherwise.
-func (o *Body1) GetDestinationIp() string {
-	if o == nil || o.DestinationIp == nil {
-		var ret string
-		return ret
-	}
-	return *o.DestinationIp
-}
-
-// GetDestinationIpOk returns a tuple with the DestinationIp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Body1) GetDestinationIpOk() (*string, bool) {
-	if o == nil || o.DestinationIp == nil {
-		return nil, false
-	}
-	return o.DestinationIp, true
-}
-
-// HasDestinationIp returns a boolean if a field has been set.
-func (o *Body1) HasDestinationIp() bool {
-	if o != nil && o.DestinationIp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationIp gets a reference to the given string and assigns it to the DestinationIp field.
-func (o *Body1) SetDestinationIp(v string) {
-	o.DestinationIp = &v
-}
-
-// GetDestinationPort returns the DestinationPort field value if set, zero value otherwise.
-func (o *Body1) GetDestinationPort() int32 {
-	if o == nil || o.DestinationPort == nil {
-		var ret int32
-		return ret
-	}
-	return *o.DestinationPort
-}
-
-// GetDestinationPortOk returns a tuple with the DestinationPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Body1) GetDestinationPortOk() (*int32, bool) {
-	if o == nil || o.DestinationPort == nil {
-		return nil, false
-	}
-	return o.DestinationPort, true
-}
-
-// HasDestinationPort returns a boolean if a field has been set.
-func (o *Body1) HasDestinationPort() bool {
-	if o != nil && o.DestinationPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationPort gets a reference to the given int32 and assigns it to the DestinationPort field.
-func (o *Body1) SetDestinationPort(v int32) {
-	o.DestinationPort = &v
-}
-
-func (o Body1) MarshalJSON() ([]byte, error) {
+func (o V1CreateSipTeleport) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Protocol != nil {
-		toSerialize["protocol"] = o.Protocol
-	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.DestinationIp != nil {
-		toSerialize["destination_ip"] = o.DestinationIp
-	}
-	if o.DestinationPort != nil {
-		toSerialize["destination_port"] = o.DestinationPort
+	if true {
+		toSerialize["destination"] = o.Destination
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableBody1 struct {
-	value *Body1
+type NullableV1CreateSipTeleport struct {
+	value *V1CreateSipTeleport
 	isSet bool
 }
 
-func (v NullableBody1) Get() *Body1 {
+func (v NullableV1CreateSipTeleport) Get() *V1CreateSipTeleport {
 	return v.value
 }
 
-func (v *NullableBody1) Set(val *Body1) {
+func (v *NullableV1CreateSipTeleport) Set(val *V1CreateSipTeleport) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBody1) IsSet() bool {
+func (v NullableV1CreateSipTeleport) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBody1) Unset() {
+func (v *NullableV1CreateSipTeleport) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBody1(val *Body1) *NullableBody1 {
-	return &NullableBody1{value: val, isSet: true}
+func NewNullableV1CreateSipTeleport(val *V1CreateSipTeleport) *NullableV1CreateSipTeleport {
+	return &NullableV1CreateSipTeleport{value: val, isSet: true}
 }
 
-func (v NullableBody1) MarshalJSON() ([]byte, error) {
+func (v NullableV1CreateSipTeleport) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBody1) UnmarshalJSON(src []byte) error {
+func (v *NullableV1CreateSipTeleport) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

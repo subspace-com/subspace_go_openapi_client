@@ -15,212 +15,208 @@ import (
 	"encoding/json"
 )
 
-// Body1 struct for Body1
-type Body1 struct {
-	// udp or tcp
-	Protocol *string `json:"protocol,omitempty"`
-	// Name of PacketAccelerator
-	Name *string `json:"name,omitempty"`
-	// Destination IP, e.g. 1.2.3.4
-	DestinationIp *string `json:"destination_ip,omitempty"`
-	// Destination port, e.g. 443
-	DestinationPort *int32 `json:"destination_port,omitempty"`
+// V1Session struct for V1Session
+type V1Session struct {
+	ClientIp *string `json:"client_ip,omitempty"`
+	ClientPort *int64 `json:"client_port,omitempty"`
+	SubspaceIp *string `json:"subspace_ip,omitempty"`
+	SubspacePort *int64 `json:"subspace_port,omitempty"`
 }
 
-// NewBody1 instantiates a new Body1 object
+// NewV1Session instantiates a new V1Session object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBody1() *Body1 {
-	this := Body1{}
+func NewV1Session() *V1Session {
+	this := V1Session{}
 	return &this
 }
 
-// NewBody1WithDefaults instantiates a new Body1 object
+// NewV1SessionWithDefaults instantiates a new V1Session object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBody1WithDefaults() *Body1 {
-	this := Body1{}
+func NewV1SessionWithDefaults() *V1Session {
+	this := V1Session{}
 	return &this
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
-func (o *Body1) GetProtocol() string {
-	if o == nil || o.Protocol == nil {
+// GetClientIp returns the ClientIp field value if set, zero value otherwise.
+func (o *V1Session) GetClientIp() string {
+	if o == nil || o.ClientIp == nil {
 		var ret string
 		return ret
 	}
-	return *o.Protocol
+	return *o.ClientIp
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetClientIpOk returns a tuple with the ClientIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetProtocolOk() (*string, bool) {
-	if o == nil || o.Protocol == nil {
+func (o *V1Session) GetClientIpOk() (*string, bool) {
+	if o == nil || o.ClientIp == nil {
 		return nil, false
 	}
-	return o.Protocol, true
+	return o.ClientIp, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *Body1) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
+// HasClientIp returns a boolean if a field has been set.
+func (o *V1Session) HasClientIp() bool {
+	if o != nil && o.ClientIp != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
-func (o *Body1) SetProtocol(v string) {
-	o.Protocol = &v
+// SetClientIp gets a reference to the given string and assigns it to the ClientIp field.
+func (o *V1Session) SetClientIp(v string) {
+	o.ClientIp = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Body1) GetName() string {
-	if o == nil || o.Name == nil {
+// GetClientPort returns the ClientPort field value if set, zero value otherwise.
+func (o *V1Session) GetClientPort() int64 {
+	if o == nil || o.ClientPort == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ClientPort
+}
+
+// GetClientPortOk returns a tuple with the ClientPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1Session) GetClientPortOk() (*int64, bool) {
+	if o == nil || o.ClientPort == nil {
+		return nil, false
+	}
+	return o.ClientPort, true
+}
+
+// HasClientPort returns a boolean if a field has been set.
+func (o *V1Session) HasClientPort() bool {
+	if o != nil && o.ClientPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientPort gets a reference to the given int64 and assigns it to the ClientPort field.
+func (o *V1Session) SetClientPort(v int64) {
+	o.ClientPort = &v
+}
+
+// GetSubspaceIp returns the SubspaceIp field value if set, zero value otherwise.
+func (o *V1Session) GetSubspaceIp() string {
+	if o == nil || o.SubspaceIp == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.SubspaceIp
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetSubspaceIpOk returns a tuple with the SubspaceIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+func (o *V1Session) GetSubspaceIpOk() (*string, bool) {
+	if o == nil || o.SubspaceIp == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.SubspaceIp, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Body1) HasName() bool {
-	if o != nil && o.Name != nil {
+// HasSubspaceIp returns a boolean if a field has been set.
+func (o *V1Session) HasSubspaceIp() bool {
+	if o != nil && o.SubspaceIp != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Body1) SetName(v string) {
-	o.Name = &v
+// SetSubspaceIp gets a reference to the given string and assigns it to the SubspaceIp field.
+func (o *V1Session) SetSubspaceIp(v string) {
+	o.SubspaceIp = &v
 }
 
-// GetDestinationIp returns the DestinationIp field value if set, zero value otherwise.
-func (o *Body1) GetDestinationIp() string {
-	if o == nil || o.DestinationIp == nil {
-		var ret string
+// GetSubspacePort returns the SubspacePort field value if set, zero value otherwise.
+func (o *V1Session) GetSubspacePort() int64 {
+	if o == nil || o.SubspacePort == nil {
+		var ret int64
 		return ret
 	}
-	return *o.DestinationIp
+	return *o.SubspacePort
 }
 
-// GetDestinationIpOk returns a tuple with the DestinationIp field value if set, nil otherwise
+// GetSubspacePortOk returns a tuple with the SubspacePort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetDestinationIpOk() (*string, bool) {
-	if o == nil || o.DestinationIp == nil {
+func (o *V1Session) GetSubspacePortOk() (*int64, bool) {
+	if o == nil || o.SubspacePort == nil {
 		return nil, false
 	}
-	return o.DestinationIp, true
+	return o.SubspacePort, true
 }
 
-// HasDestinationIp returns a boolean if a field has been set.
-func (o *Body1) HasDestinationIp() bool {
-	if o != nil && o.DestinationIp != nil {
+// HasSubspacePort returns a boolean if a field has been set.
+func (o *V1Session) HasSubspacePort() bool {
+	if o != nil && o.SubspacePort != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationIp gets a reference to the given string and assigns it to the DestinationIp field.
-func (o *Body1) SetDestinationIp(v string) {
-	o.DestinationIp = &v
+// SetSubspacePort gets a reference to the given int64 and assigns it to the SubspacePort field.
+func (o *V1Session) SetSubspacePort(v int64) {
+	o.SubspacePort = &v
 }
 
-// GetDestinationPort returns the DestinationPort field value if set, zero value otherwise.
-func (o *Body1) GetDestinationPort() int32 {
-	if o == nil || o.DestinationPort == nil {
-		var ret int32
-		return ret
-	}
-	return *o.DestinationPort
-}
-
-// GetDestinationPortOk returns a tuple with the DestinationPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Body1) GetDestinationPortOk() (*int32, bool) {
-	if o == nil || o.DestinationPort == nil {
-		return nil, false
-	}
-	return o.DestinationPort, true
-}
-
-// HasDestinationPort returns a boolean if a field has been set.
-func (o *Body1) HasDestinationPort() bool {
-	if o != nil && o.DestinationPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationPort gets a reference to the given int32 and assigns it to the DestinationPort field.
-func (o *Body1) SetDestinationPort(v int32) {
-	o.DestinationPort = &v
-}
-
-func (o Body1) MarshalJSON() ([]byte, error) {
+func (o V1Session) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Protocol != nil {
-		toSerialize["protocol"] = o.Protocol
+	if o.ClientIp != nil {
+		toSerialize["client_ip"] = o.ClientIp
 	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	if o.ClientPort != nil {
+		toSerialize["client_port"] = o.ClientPort
 	}
-	if o.DestinationIp != nil {
-		toSerialize["destination_ip"] = o.DestinationIp
+	if o.SubspaceIp != nil {
+		toSerialize["subspace_ip"] = o.SubspaceIp
 	}
-	if o.DestinationPort != nil {
-		toSerialize["destination_port"] = o.DestinationPort
+	if o.SubspacePort != nil {
+		toSerialize["subspace_port"] = o.SubspacePort
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableBody1 struct {
-	value *Body1
+type NullableV1Session struct {
+	value *V1Session
 	isSet bool
 }
 
-func (v NullableBody1) Get() *Body1 {
+func (v NullableV1Session) Get() *V1Session {
 	return v.value
 }
 
-func (v *NullableBody1) Set(val *Body1) {
+func (v *NullableV1Session) Set(val *V1Session) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBody1) IsSet() bool {
+func (v NullableV1Session) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBody1) Unset() {
+func (v *NullableV1Session) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBody1(val *Body1) *NullableBody1 {
-	return &NullableBody1{value: val, isSet: true}
+func NewNullableV1Session(val *V1Session) *NullableV1Session {
+	return &NullableV1Session{value: val, isSet: true}
 }
 
-func (v NullableBody1) MarshalJSON() ([]byte, error) {
+func (v NullableV1Session) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBody1) UnmarshalJSON(src []byte) error {
+func (v *NullableV1Session) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

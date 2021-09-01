@@ -4,19 +4,17 @@ All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AcceleratorServiceCreate**](AcceleratorServiceApi.md#AcceleratorServiceCreate) | **Post** /v1/accelerators | CreateAccelerator
-[**AcceleratorServiceDelete**](AcceleratorServiceApi.md#AcceleratorServiceDelete) | **Delete** /v1/accelerators/{id} | DeleteAccelerator
-[**AcceleratorServiceGet**](AcceleratorServiceApi.md#AcceleratorServiceGet) | **Get** /v1/accelerators/{id} | GetAccelerator
-[**AcceleratorServiceList**](AcceleratorServiceApi.md#AcceleratorServiceList) | **Get** /v1/accelerators | ListAccelerators
-[**AcceleratorServiceUpdate**](AcceleratorServiceApi.md#AcceleratorServiceUpdate) | **Put** /v1/accelerators/{id} | UpdateAccelerator
+[**AcceleratorServiceCreate**](AcceleratorServiceApi.md#AcceleratorServiceCreate) | **Post** /v1/accelerators | 
+[**AcceleratorServiceDelete**](AcceleratorServiceApi.md#AcceleratorServiceDelete) | **Delete** /v1/accelerators/{id} | 
+[**AcceleratorServiceGet**](AcceleratorServiceApi.md#AcceleratorServiceGet) | **Get** /v1/accelerators/{id} | 
+[**AcceleratorServiceList**](AcceleratorServiceApi.md#AcceleratorServiceList) | **Get** /v1/accelerators | 
+[**AcceleratorServiceUpdate**](AcceleratorServiceApi.md#AcceleratorServiceUpdate) | **Put** /v1/accelerators/{id} | 
 
 
 
 ## AcceleratorServiceCreate
 
 > V1Accelerator AcceleratorServiceCreate(ctx).Body(body).IdempotencyKey(idempotencyKey).Execute()
-
-CreateAccelerator
 
 
 
@@ -83,8 +81,6 @@ Name | Type | Description  | Notes
 ## AcceleratorServiceDelete
 
 > map[string]interface{} AcceleratorServiceDelete(ctx, id).Execute()
-
-DeleteAccelerator
 
 
 
@@ -154,8 +150,6 @@ Name | Type | Description  | Notes
 
 > V1Accelerator AcceleratorServiceGet(ctx, id).Execute()
 
-GetAccelerator
-
 
 
 ### Example
@@ -222,9 +216,7 @@ Name | Type | Description  | Notes
 
 ## AcceleratorServiceList
 
-> V1ListAcceleratorsResponse AcceleratorServiceList(ctx).Before(before).Limit(limit).Q(q).Execute()
-
-ListAccelerators
+> V1ListAcceleratorsResponse AcceleratorServiceList(ctx).Before(before).Limit(limit).Execute()
 
 
 
@@ -243,11 +235,10 @@ import (
 func main() {
     before := "before_example" // string |  (optional)
     limit := int64(789) // int64 |  (optional)
-    q := "q_example" // string | q Provides a query string which filters accelerators in the response. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AcceleratorServiceApi.AcceleratorServiceList(context.Background()).Before(before).Limit(limit).Q(q).Execute()
+    resp, r, err := api_client.AcceleratorServiceApi.AcceleratorServiceList(context.Background()).Before(before).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AcceleratorServiceApi.AcceleratorServiceList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -270,7 +261,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **before** | **string** |  | 
  **limit** | **int64** |  | 
- **q** | **string** | q Provides a query string which filters accelerators in the response. | 
 
 ### Return type
 
@@ -293,8 +283,6 @@ Name | Type | Description  | Notes
 ## AcceleratorServiceUpdate
 
 > V1Accelerator AcceleratorServiceUpdate(ctx, id).Body1(body1).IfMatch(ifMatch).Execute()
-
-UpdateAccelerator
 
 
 

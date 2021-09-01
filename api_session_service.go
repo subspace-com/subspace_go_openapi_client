@@ -12,220 +12,206 @@
 package subspace_openapi_client
 
 import (
-	"context"
-	"fmt"
-	"net/http"
+	"bytes"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
-// contextKeys are used to identify the type of value in the context.
-// Since these are string, it is possible to get a short description of the
-// context key for logging and debugging using key.String().
-
-type contextKey string
-
-func (c contextKey) String() string {
-	return "auth " + string(c)
-}
-
+// Linger please
 var (
-	// ContextOAuth2 takes an oauth2.TokenSource as authentication for the request.
-	ContextOAuth2 = contextKey("token")
-
-	// ContextBasicAuth takes BasicAuth as authentication for the request.
-	ContextBasicAuth = contextKey("basic")
-
-	// ContextAccessToken takes a string oauth2 access token as authentication for the request.
-	ContextAccessToken = contextKey("accesstoken")
-
-	// ContextAPIKeys takes a string apikey as authentication for the request
-	ContextAPIKeys = contextKey("apiKeys")
-
-	// ContextHttpSignatureAuth takes HttpSignatureAuth as authentication for the request.
-	ContextHttpSignatureAuth = contextKey("httpsignature")
-
-	// ContextServerIndex uses a server configuration from the index.
-	ContextServerIndex = contextKey("serverIndex")
-
-	// ContextOperationServerIndices uses a server configuration from the index mapping.
-	ContextOperationServerIndices = contextKey("serverOperationIndices")
-
-	// ContextServerVariables overrides a server configuration variables.
-	ContextServerVariables = contextKey("serverVariables")
-
-	// ContextOperationServerVariables overrides a server configuration variables using operation specific values.
-	ContextOperationServerVariables = contextKey("serverOperationVariables")
+	_ _context.Context
 )
 
-// BasicAuth provides basic http authentication to a request passed via context using ContextBasicAuth
-type BasicAuth struct {
-	UserName string `json:"userName,omitempty"`
-	Password string `json:"password,omitempty"`
+// SessionServiceApiService SessionServiceApi service
+type SessionServiceApiService service
+
+type ApiSessionServiceListRequest struct {
+	ctx _context.Context
+	ApiService *SessionServiceApiService
+	acceleratorId string
+	before *string
+	limit *int64
 }
 
-// APIKey provides API key based authentication to a request passed via context using ContextAPIKey
-type APIKey struct {
-	Key    string
-	Prefix string
+func (r ApiSessionServiceListRequest) Before(before string) ApiSessionServiceListRequest {
+	r.before = &before
+	return r
+}
+func (r ApiSessionServiceListRequest) Limit(limit int64) ApiSessionServiceListRequest {
+	r.limit = &limit
+	return r
 }
 
-// ServerVariable stores the information about a server variable
-type ServerVariable struct {
-	Description  string
-	DefaultValue string
-	EnumValues   []string
+func (r ApiSessionServiceListRequest) Execute() (V1ListSessionsResponse, *_nethttp.Response, error) {
+	return r.ApiService.SessionServiceListExecute(r)
 }
 
-// ServerConfiguration stores the information about a server
-type ServerConfiguration struct {
-	URL string
-	Description string
-	Variables map[string]ServerVariable
-}
-
-// ServerConfigurations stores multiple ServerConfiguration items
-type ServerConfigurations []ServerConfiguration
-
-// Configuration stores the configuration of the API client
-type Configuration struct {
-	Host             string            `json:"host,omitempty"`
-	Scheme           string            `json:"scheme,omitempty"`
-	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
-	UserAgent        string            `json:"userAgent,omitempty"`
-	Debug            bool              `json:"debug,omitempty"`
-	Servers          ServerConfigurations
-	OperationServers map[string]ServerConfigurations
-	HTTPClient       *http.Client
-}
-
-// NewConfiguration returns a new Configuration object
-func NewConfiguration() *Configuration {
-	cfg := &Configuration{
-		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/1.0.0/go",
-		Debug:            false,
-		Servers:          ServerConfigurations{
-			{
-				URL: "https://api.subspace.com",
-				Description: "Current API host server",
-			},
-		},
-		OperationServers: map[string]ServerConfigurations{
-		},
+/*
+ * SessionServiceList Method for SessionServiceList
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param acceleratorId
+ * @return ApiSessionServiceListRequest
+ */
+func (a *SessionServiceApiService) SessionServiceList(ctx _context.Context, acceleratorId string) ApiSessionServiceListRequest {
+	return ApiSessionServiceListRequest{
+		ApiService: a,
+		ctx: ctx,
+		acceleratorId: acceleratorId,
 	}
-	return cfg
 }
 
-// AddDefaultHeader adds a new HTTP header to the default header in the request
-func (c *Configuration) AddDefaultHeader(key string, value string) {
-	c.DefaultHeader[key] = value
-}
+/*
+ * Execute executes the request
+ * @return V1ListSessionsResponse
+ */
+func (a *SessionServiceApiService) SessionServiceListExecute(r ApiSessionServiceListRequest) (V1ListSessionsResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  V1ListSessionsResponse
+	)
 
-// URL formats template on a index using given variables
-func (sc ServerConfigurations) URL(index int, variables map[string]string) (string, error) {
-	if index < 0 || len(sc) <= index {
-		return "", fmt.Errorf("Index %v out of range %v", index, len(sc)-1)
-	}
-	server := sc[index]
-	url := server.URL
-
-	// go through variables and replace placeholders
-	for name, variable := range server.Variables {
-		if value, ok := variables[name]; ok {
-			found := bool(len(variable.EnumValues) == 0)
-			for _, enumValue := range variable.EnumValues {
-				if value == enumValue {
-					found = true
-				}
-			}
-			if !found {
-				return "", fmt.Errorf("The variable %s in the server URL has invalid value %v. Must be %v", name, value, variable.EnumValues)
-			}
-			url = strings.Replace(url, "{"+name+"}", value, -1)
-		} else {
-			url = strings.Replace(url, "{"+name+"}", variable.DefaultValue, -1)
-		}
-	}
-	return url, nil
-}
-
-// ServerURL returns URL based on server settings
-func (c *Configuration) ServerURL(index int, variables map[string]string) (string, error) {
-	return c.Servers.URL(index, variables)
-}
-
-func getServerIndex(ctx context.Context) (int, error) {
-	si := ctx.Value(ContextServerIndex)
-	if si != nil {
-		if index, ok := si.(int); ok {
-			return index, nil
-		}
-		return 0, reportError("Invalid type %T should be int", si)
-	}
-	return 0, nil
-}
-
-func getServerOperationIndex(ctx context.Context, endpoint string) (int, error) {
-	osi := ctx.Value(ContextOperationServerIndices)
-	if osi != nil {
-		if operationIndices, ok := osi.(map[string]int); !ok {
-			return 0, reportError("Invalid type %T should be map[string]int", osi)
-		} else {
-			index, ok := operationIndices[endpoint]
-			if ok {
-				return index, nil
-			}
-		}
-	}
-	return getServerIndex(ctx)
-}
-
-func getServerVariables(ctx context.Context) (map[string]string, error) {
-	sv := ctx.Value(ContextServerVariables)
-	if sv != nil {
-		if variables, ok := sv.(map[string]string); ok {
-			return variables, nil
-		}
-		return nil, reportError("ctx value of ContextServerVariables has invalid type %T should be map[string]string", sv)
-	}
-	return nil, nil
-}
-
-func getServerOperationVariables(ctx context.Context, endpoint string) (map[string]string, error) {
-	osv := ctx.Value(ContextOperationServerVariables)
-	if osv != nil {
-		if operationVariables, ok := osv.(map[string]map[string]string); !ok {
-			return nil, reportError("ctx value of ContextOperationServerVariables has invalid type %T should be map[string]map[string]string", osv)
-		} else {
-			variables, ok := operationVariables[endpoint]
-			if ok {
-				return variables, nil
-			}
-		}
-	}
-	return getServerVariables(ctx)
-}
-
-// ServerURLWithContext returns a new server URL given an endpoint
-func (c *Configuration) ServerURLWithContext(ctx context.Context, endpoint string) (string, error) {
-	sc, ok := c.OperationServers[endpoint]
-	if !ok {
-		sc = c.Servers
-	}
-
-	if ctx == nil {
-		return sc.URL(0, nil)
-	}
-
-	index, err := getServerOperationIndex(ctx, endpoint)
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SessionServiceApiService.SessionServiceList")
 	if err != nil {
-		return "", err
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	variables, err := getServerOperationVariables(ctx, endpoint)
+	localVarPath := localBasePath + "/v1/accelerators/{accelerator_id}/sessions"
+	localVarPath = strings.Replace(localVarPath, "{"+"accelerator_id"+"}", _neturl.PathEscape(parameterToString(r.acceleratorId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.before != nil {
+		localVarQueryParams.Add("before", parameterToString(*r.before, ""))
+	}
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return "", err
+		return localVarReturnValue, nil, err
 	}
 
-	return sc.URL(index, variables)
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 402 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

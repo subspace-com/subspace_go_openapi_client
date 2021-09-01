@@ -4,19 +4,17 @@ All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SipTeleportServiceCreate**](SipTeleportServiceApi.md#SipTeleportServiceCreate) | **Post** /v1/sip-teleports | CreateSipTeleport
-[**SipTeleportServiceDelete**](SipTeleportServiceApi.md#SipTeleportServiceDelete) | **Delete** /v1/sip-teleports/{id} | DeleteSipTeleport
-[**SipTeleportServiceGet**](SipTeleportServiceApi.md#SipTeleportServiceGet) | **Get** /v1/sip-teleports/{id} | GetSipTeleport
-[**SipTeleportServiceList**](SipTeleportServiceApi.md#SipTeleportServiceList) | **Get** /v1/sip-teleports | ListSipTeleports
-[**SipTeleportServiceUpdate**](SipTeleportServiceApi.md#SipTeleportServiceUpdate) | **Put** /v1/sip-teleports/{id} | UpdateSipTeleport
+[**SipTeleportServiceCreate**](SipTeleportServiceApi.md#SipTeleportServiceCreate) | **Post** /v1/sip-teleports | 
+[**SipTeleportServiceDelete**](SipTeleportServiceApi.md#SipTeleportServiceDelete) | **Delete** /v1/sip-teleports/{id} | 
+[**SipTeleportServiceGet**](SipTeleportServiceApi.md#SipTeleportServiceGet) | **Get** /v1/sip-teleports/{id} | 
+[**SipTeleportServiceList**](SipTeleportServiceApi.md#SipTeleportServiceList) | **Get** /v1/sip-teleports | 
+[**SipTeleportServiceUpdate**](SipTeleportServiceApi.md#SipTeleportServiceUpdate) | **Put** /v1/sip-teleports/{id} | 
 
 
 
 ## SipTeleportServiceCreate
 
-> V1SipTeleportResponse SipTeleportServiceCreate(ctx).Execute()
-
-CreateSipTeleport
+> V1SipTeleportResponse SipTeleportServiceCreate(ctx).V1CreateSipTeleport(v1CreateSipTeleport).IdempotencyKey(idempotencyKey).Execute()
 
 
 
@@ -33,10 +31,12 @@ import (
 )
 
 func main() {
+    v1CreateSipTeleport := *openapiclient.NewV1CreateSipTeleport("Name_example", "Destination_example") // V1CreateSipTeleport | Required parameters to create a new SIPTeleport
+    idempotencyKey := "idempotencyKey_example" // string | Value is the returned etag of a get request.  If a retry sends an Idempotency-Key that has been seen before, the existing teleport is returned with the status code of 200 (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SipTeleportServiceApi.SipTeleportServiceCreate(context.Background()).Execute()
+    resp, r, err := api_client.SipTeleportServiceApi.SipTeleportServiceCreate(context.Background()).V1CreateSipTeleport(v1CreateSipTeleport).IdempotencyKey(idempotencyKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SipTeleportServiceApi.SipTeleportServiceCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -48,12 +48,17 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSipTeleportServiceCreateRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **v1CreateSipTeleport** | [**V1CreateSipTeleport**](V1CreateSipTeleport.md) | Required parameters to create a new SIPTeleport | 
+ **idempotencyKey** | **string** | Value is the returned etag of a get request.  If a retry sends an Idempotency-Key that has been seen before, the existing teleport is returned with the status code of 200 | 
 
 ### Return type
 
@@ -65,7 +70,7 @@ Other parameters are passed through a pointer to a apiSipTeleportServiceCreateRe
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -76,8 +81,6 @@ Other parameters are passed through a pointer to a apiSipTeleportServiceCreateRe
 ## SipTeleportServiceDelete
 
 > V1SipTeleportResponse SipTeleportServiceDelete(ctx, id).Execute()
-
-DeleteSipTeleport
 
 
 
@@ -147,8 +150,6 @@ Name | Type | Description  | Notes
 
 > V1SipTeleportResponse SipTeleportServiceGet(ctx, id).Execute()
 
-GetSipTeleport
-
 
 
 ### Example
@@ -217,8 +218,6 @@ Name | Type | Description  | Notes
 
 > V1ListSipTeleportResponse SipTeleportServiceList(ctx).Before(before).Limit(limit).Execute()
 
-ListSipTeleports
-
 
 
 ### Example
@@ -283,9 +282,7 @@ Name | Type | Description  | Notes
 
 ## SipTeleportServiceUpdate
 
-> V1SipTeleportResponse SipTeleportServiceUpdate(ctx, id).Execute()
-
-UpdateSipTeleport
+> V1SipTeleportResponse SipTeleportServiceUpdate(ctx, id).V1UpdateSipTeleport(v1UpdateSipTeleport).Execute()
 
 
 
@@ -303,10 +300,11 @@ import (
 
 func main() {
     id := "id_example" // string | 
+    v1UpdateSipTeleport := *openapiclient.NewV1UpdateSipTeleport("Name_example", "Destination_example", openapiclient.v1SipTeleportStatus("DISABLED")) // V1UpdateSipTeleport | Parameters to update an existing SIPTeleport, minimum requirement of one of them defined to update
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SipTeleportServiceApi.SipTeleportServiceUpdate(context.Background(), id).Execute()
+    resp, r, err := api_client.SipTeleportServiceApi.SipTeleportServiceUpdate(context.Background(), id).V1UpdateSipTeleport(v1UpdateSipTeleport).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SipTeleportServiceApi.SipTeleportServiceUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,6 +330,7 @@ Other parameters are passed through a pointer to a apiSipTeleportServiceUpdateRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **v1UpdateSipTeleport** | [**V1UpdateSipTeleport**](V1UpdateSipTeleport.md) | Parameters to update an existing SIPTeleport, minimum requirement of one of them defined to update | 
 
 ### Return type
 
@@ -343,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

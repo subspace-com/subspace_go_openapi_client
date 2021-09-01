@@ -15,212 +15,136 @@ import (
 	"encoding/json"
 )
 
-// Body1 struct for Body1
-type Body1 struct {
-	// udp or tcp
-	Protocol *string `json:"protocol,omitempty"`
-	// Name of PacketAccelerator
-	Name *string `json:"name,omitempty"`
-	// Destination IP, e.g. 1.2.3.4
-	DestinationIp *string `json:"destination_ip,omitempty"`
-	// Destination port, e.g. 443
-	DestinationPort *int32 `json:"destination_port,omitempty"`
+// V1ListSessionsResponse struct for V1ListSessionsResponse
+type V1ListSessionsResponse struct {
+	Sessions *[]V1Session `json:"sessions,omitempty"`
+	NextPage *V1NextPage `json:"next_page,omitempty"`
 }
 
-// NewBody1 instantiates a new Body1 object
+// NewV1ListSessionsResponse instantiates a new V1ListSessionsResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBody1() *Body1 {
-	this := Body1{}
+func NewV1ListSessionsResponse() *V1ListSessionsResponse {
+	this := V1ListSessionsResponse{}
 	return &this
 }
 
-// NewBody1WithDefaults instantiates a new Body1 object
+// NewV1ListSessionsResponseWithDefaults instantiates a new V1ListSessionsResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBody1WithDefaults() *Body1 {
-	this := Body1{}
+func NewV1ListSessionsResponseWithDefaults() *V1ListSessionsResponse {
+	this := V1ListSessionsResponse{}
 	return &this
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
-func (o *Body1) GetProtocol() string {
-	if o == nil || o.Protocol == nil {
-		var ret string
+// GetSessions returns the Sessions field value if set, zero value otherwise.
+func (o *V1ListSessionsResponse) GetSessions() []V1Session {
+	if o == nil || o.Sessions == nil {
+		var ret []V1Session
 		return ret
 	}
-	return *o.Protocol
+	return *o.Sessions
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetSessionsOk returns a tuple with the Sessions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetProtocolOk() (*string, bool) {
-	if o == nil || o.Protocol == nil {
+func (o *V1ListSessionsResponse) GetSessionsOk() (*[]V1Session, bool) {
+	if o == nil || o.Sessions == nil {
 		return nil, false
 	}
-	return o.Protocol, true
+	return o.Sessions, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *Body1) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
+// HasSessions returns a boolean if a field has been set.
+func (o *V1ListSessionsResponse) HasSessions() bool {
+	if o != nil && o.Sessions != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
-func (o *Body1) SetProtocol(v string) {
-	o.Protocol = &v
+// SetSessions gets a reference to the given []V1Session and assigns it to the Sessions field.
+func (o *V1ListSessionsResponse) SetSessions(v []V1Session) {
+	o.Sessions = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Body1) GetName() string {
-	if o == nil || o.Name == nil {
-		var ret string
+// GetNextPage returns the NextPage field value if set, zero value otherwise.
+func (o *V1ListSessionsResponse) GetNextPage() V1NextPage {
+	if o == nil || o.NextPage == nil {
+		var ret V1NextPage
 		return ret
 	}
-	return *o.Name
+	return *o.NextPage
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNextPageOk returns a tuple with the NextPage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+func (o *V1ListSessionsResponse) GetNextPageOk() (*V1NextPage, bool) {
+	if o == nil || o.NextPage == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.NextPage, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Body1) HasName() bool {
-	if o != nil && o.Name != nil {
+// HasNextPage returns a boolean if a field has been set.
+func (o *V1ListSessionsResponse) HasNextPage() bool {
+	if o != nil && o.NextPage != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Body1) SetName(v string) {
-	o.Name = &v
+// SetNextPage gets a reference to the given V1NextPage and assigns it to the NextPage field.
+func (o *V1ListSessionsResponse) SetNextPage(v V1NextPage) {
+	o.NextPage = &v
 }
 
-// GetDestinationIp returns the DestinationIp field value if set, zero value otherwise.
-func (o *Body1) GetDestinationIp() string {
-	if o == nil || o.DestinationIp == nil {
-		var ret string
-		return ret
-	}
-	return *o.DestinationIp
-}
-
-// GetDestinationIpOk returns a tuple with the DestinationIp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Body1) GetDestinationIpOk() (*string, bool) {
-	if o == nil || o.DestinationIp == nil {
-		return nil, false
-	}
-	return o.DestinationIp, true
-}
-
-// HasDestinationIp returns a boolean if a field has been set.
-func (o *Body1) HasDestinationIp() bool {
-	if o != nil && o.DestinationIp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationIp gets a reference to the given string and assigns it to the DestinationIp field.
-func (o *Body1) SetDestinationIp(v string) {
-	o.DestinationIp = &v
-}
-
-// GetDestinationPort returns the DestinationPort field value if set, zero value otherwise.
-func (o *Body1) GetDestinationPort() int32 {
-	if o == nil || o.DestinationPort == nil {
-		var ret int32
-		return ret
-	}
-	return *o.DestinationPort
-}
-
-// GetDestinationPortOk returns a tuple with the DestinationPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Body1) GetDestinationPortOk() (*int32, bool) {
-	if o == nil || o.DestinationPort == nil {
-		return nil, false
-	}
-	return o.DestinationPort, true
-}
-
-// HasDestinationPort returns a boolean if a field has been set.
-func (o *Body1) HasDestinationPort() bool {
-	if o != nil && o.DestinationPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationPort gets a reference to the given int32 and assigns it to the DestinationPort field.
-func (o *Body1) SetDestinationPort(v int32) {
-	o.DestinationPort = &v
-}
-
-func (o Body1) MarshalJSON() ([]byte, error) {
+func (o V1ListSessionsResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Protocol != nil {
-		toSerialize["protocol"] = o.Protocol
+	if o.Sessions != nil {
+		toSerialize["sessions"] = o.Sessions
 	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.DestinationIp != nil {
-		toSerialize["destination_ip"] = o.DestinationIp
-	}
-	if o.DestinationPort != nil {
-		toSerialize["destination_port"] = o.DestinationPort
+	if o.NextPage != nil {
+		toSerialize["next_page"] = o.NextPage
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableBody1 struct {
-	value *Body1
+type NullableV1ListSessionsResponse struct {
+	value *V1ListSessionsResponse
 	isSet bool
 }
 
-func (v NullableBody1) Get() *Body1 {
+func (v NullableV1ListSessionsResponse) Get() *V1ListSessionsResponse {
 	return v.value
 }
 
-func (v *NullableBody1) Set(val *Body1) {
+func (v *NullableV1ListSessionsResponse) Set(val *V1ListSessionsResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBody1) IsSet() bool {
+func (v NullableV1ListSessionsResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBody1) Unset() {
+func (v *NullableV1ListSessionsResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBody1(val *Body1) *NullableBody1 {
-	return &NullableBody1{value: val, isSet: true}
+func NewNullableV1ListSessionsResponse(val *V1ListSessionsResponse) *NullableV1ListSessionsResponse {
+	return &NullableV1ListSessionsResponse{value: val, isSet: true}
 }
 
-func (v NullableBody1) MarshalJSON() ([]byte, error) {
+func (v NullableV1ListSessionsResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBody1) UnmarshalJSON(src []byte) error {
+func (v *NullableV1ListSessionsResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

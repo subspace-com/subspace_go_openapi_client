@@ -15,69 +15,69 @@ import (
 	"encoding/json"
 )
 
-// Body1 struct for Body1
-type Body1 struct {
-	// udp or tcp
-	Protocol *string `json:"protocol,omitempty"`
-	// Name of PacketAccelerator
+// V1Project struct for V1Project
+type V1Project struct {
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	// Destination IP, e.g. 1.2.3.4
-	DestinationIp *string `json:"destination_ip,omitempty"`
-	// Destination port, e.g. 443
-	DestinationPort *int32 `json:"destination_port,omitempty"`
+	AcceleratorQuota *int64 `json:"accelerator_quota,omitempty"`
+	AcceleratorRequestPort *bool `json:"accelerator_request_port,omitempty"`
+	GlobalturnLimitGb *int64 `json:"globalturn_limit_gb,omitempty"`
+	SipteleportQuota *int64 `json:"sipteleport_quota,omitempty"`
+	SipteleportCallQuota *int64 `json:"sipteleport_call_quota,omitempty"`
+	RtpspeedLimitGb *int64 `json:"rtpspeed_limit_gb,omitempty"`
 }
 
-// NewBody1 instantiates a new Body1 object
+// NewV1Project instantiates a new V1Project object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBody1() *Body1 {
-	this := Body1{}
+func NewV1Project() *V1Project {
+	this := V1Project{}
 	return &this
 }
 
-// NewBody1WithDefaults instantiates a new Body1 object
+// NewV1ProjectWithDefaults instantiates a new V1Project object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBody1WithDefaults() *Body1 {
-	this := Body1{}
+func NewV1ProjectWithDefaults() *V1Project {
+	this := V1Project{}
 	return &this
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
-func (o *Body1) GetProtocol() string {
-	if o == nil || o.Protocol == nil {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *V1Project) GetId() string {
+	if o == nil || o.Id == nil {
 		var ret string
 		return ret
 	}
-	return *o.Protocol
+	return *o.Id
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetProtocolOk() (*string, bool) {
-	if o == nil || o.Protocol == nil {
+func (o *V1Project) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
-	return o.Protocol, true
+	return o.Id, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *Body1) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
+// HasId returns a boolean if a field has been set.
+func (o *V1Project) HasId() bool {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
-func (o *Body1) SetProtocol(v string) {
-	o.Protocol = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *V1Project) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *Body1) GetName() string {
+func (o *V1Project) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -87,7 +87,7 @@ func (o *Body1) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetNameOk() (*string, bool) {
+func (o *V1Project) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *Body1) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *Body1) HasName() bool {
+func (o *V1Project) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -104,123 +104,263 @@ func (o *Body1) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Body1) SetName(v string) {
+func (o *V1Project) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDestinationIp returns the DestinationIp field value if set, zero value otherwise.
-func (o *Body1) GetDestinationIp() string {
-	if o == nil || o.DestinationIp == nil {
-		var ret string
+// GetAcceleratorQuota returns the AcceleratorQuota field value if set, zero value otherwise.
+func (o *V1Project) GetAcceleratorQuota() int64 {
+	if o == nil || o.AcceleratorQuota == nil {
+		var ret int64
 		return ret
 	}
-	return *o.DestinationIp
+	return *o.AcceleratorQuota
 }
 
-// GetDestinationIpOk returns a tuple with the DestinationIp field value if set, nil otherwise
+// GetAcceleratorQuotaOk returns a tuple with the AcceleratorQuota field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetDestinationIpOk() (*string, bool) {
-	if o == nil || o.DestinationIp == nil {
+func (o *V1Project) GetAcceleratorQuotaOk() (*int64, bool) {
+	if o == nil || o.AcceleratorQuota == nil {
 		return nil, false
 	}
-	return o.DestinationIp, true
+	return o.AcceleratorQuota, true
 }
 
-// HasDestinationIp returns a boolean if a field has been set.
-func (o *Body1) HasDestinationIp() bool {
-	if o != nil && o.DestinationIp != nil {
+// HasAcceleratorQuota returns a boolean if a field has been set.
+func (o *V1Project) HasAcceleratorQuota() bool {
+	if o != nil && o.AcceleratorQuota != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationIp gets a reference to the given string and assigns it to the DestinationIp field.
-func (o *Body1) SetDestinationIp(v string) {
-	o.DestinationIp = &v
+// SetAcceleratorQuota gets a reference to the given int64 and assigns it to the AcceleratorQuota field.
+func (o *V1Project) SetAcceleratorQuota(v int64) {
+	o.AcceleratorQuota = &v
 }
 
-// GetDestinationPort returns the DestinationPort field value if set, zero value otherwise.
-func (o *Body1) GetDestinationPort() int32 {
-	if o == nil || o.DestinationPort == nil {
-		var ret int32
+// GetAcceleratorRequestPort returns the AcceleratorRequestPort field value if set, zero value otherwise.
+func (o *V1Project) GetAcceleratorRequestPort() bool {
+	if o == nil || o.AcceleratorRequestPort == nil {
+		var ret bool
 		return ret
 	}
-	return *o.DestinationPort
+	return *o.AcceleratorRequestPort
 }
 
-// GetDestinationPortOk returns a tuple with the DestinationPort field value if set, nil otherwise
+// GetAcceleratorRequestPortOk returns a tuple with the AcceleratorRequestPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetDestinationPortOk() (*int32, bool) {
-	if o == nil || o.DestinationPort == nil {
+func (o *V1Project) GetAcceleratorRequestPortOk() (*bool, bool) {
+	if o == nil || o.AcceleratorRequestPort == nil {
 		return nil, false
 	}
-	return o.DestinationPort, true
+	return o.AcceleratorRequestPort, true
 }
 
-// HasDestinationPort returns a boolean if a field has been set.
-func (o *Body1) HasDestinationPort() bool {
-	if o != nil && o.DestinationPort != nil {
+// HasAcceleratorRequestPort returns a boolean if a field has been set.
+func (o *V1Project) HasAcceleratorRequestPort() bool {
+	if o != nil && o.AcceleratorRequestPort != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationPort gets a reference to the given int32 and assigns it to the DestinationPort field.
-func (o *Body1) SetDestinationPort(v int32) {
-	o.DestinationPort = &v
+// SetAcceleratorRequestPort gets a reference to the given bool and assigns it to the AcceleratorRequestPort field.
+func (o *V1Project) SetAcceleratorRequestPort(v bool) {
+	o.AcceleratorRequestPort = &v
 }
 
-func (o Body1) MarshalJSON() ([]byte, error) {
+// GetGlobalturnLimitGb returns the GlobalturnLimitGb field value if set, zero value otherwise.
+func (o *V1Project) GetGlobalturnLimitGb() int64 {
+	if o == nil || o.GlobalturnLimitGb == nil {
+		var ret int64
+		return ret
+	}
+	return *o.GlobalturnLimitGb
+}
+
+// GetGlobalturnLimitGbOk returns a tuple with the GlobalturnLimitGb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1Project) GetGlobalturnLimitGbOk() (*int64, bool) {
+	if o == nil || o.GlobalturnLimitGb == nil {
+		return nil, false
+	}
+	return o.GlobalturnLimitGb, true
+}
+
+// HasGlobalturnLimitGb returns a boolean if a field has been set.
+func (o *V1Project) HasGlobalturnLimitGb() bool {
+	if o != nil && o.GlobalturnLimitGb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGlobalturnLimitGb gets a reference to the given int64 and assigns it to the GlobalturnLimitGb field.
+func (o *V1Project) SetGlobalturnLimitGb(v int64) {
+	o.GlobalturnLimitGb = &v
+}
+
+// GetSipteleportQuota returns the SipteleportQuota field value if set, zero value otherwise.
+func (o *V1Project) GetSipteleportQuota() int64 {
+	if o == nil || o.SipteleportQuota == nil {
+		var ret int64
+		return ret
+	}
+	return *o.SipteleportQuota
+}
+
+// GetSipteleportQuotaOk returns a tuple with the SipteleportQuota field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1Project) GetSipteleportQuotaOk() (*int64, bool) {
+	if o == nil || o.SipteleportQuota == nil {
+		return nil, false
+	}
+	return o.SipteleportQuota, true
+}
+
+// HasSipteleportQuota returns a boolean if a field has been set.
+func (o *V1Project) HasSipteleportQuota() bool {
+	if o != nil && o.SipteleportQuota != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSipteleportQuota gets a reference to the given int64 and assigns it to the SipteleportQuota field.
+func (o *V1Project) SetSipteleportQuota(v int64) {
+	o.SipteleportQuota = &v
+}
+
+// GetSipteleportCallQuota returns the SipteleportCallQuota field value if set, zero value otherwise.
+func (o *V1Project) GetSipteleportCallQuota() int64 {
+	if o == nil || o.SipteleportCallQuota == nil {
+		var ret int64
+		return ret
+	}
+	return *o.SipteleportCallQuota
+}
+
+// GetSipteleportCallQuotaOk returns a tuple with the SipteleportCallQuota field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1Project) GetSipteleportCallQuotaOk() (*int64, bool) {
+	if o == nil || o.SipteleportCallQuota == nil {
+		return nil, false
+	}
+	return o.SipteleportCallQuota, true
+}
+
+// HasSipteleportCallQuota returns a boolean if a field has been set.
+func (o *V1Project) HasSipteleportCallQuota() bool {
+	if o != nil && o.SipteleportCallQuota != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSipteleportCallQuota gets a reference to the given int64 and assigns it to the SipteleportCallQuota field.
+func (o *V1Project) SetSipteleportCallQuota(v int64) {
+	o.SipteleportCallQuota = &v
+}
+
+// GetRtpspeedLimitGb returns the RtpspeedLimitGb field value if set, zero value otherwise.
+func (o *V1Project) GetRtpspeedLimitGb() int64 {
+	if o == nil || o.RtpspeedLimitGb == nil {
+		var ret int64
+		return ret
+	}
+	return *o.RtpspeedLimitGb
+}
+
+// GetRtpspeedLimitGbOk returns a tuple with the RtpspeedLimitGb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1Project) GetRtpspeedLimitGbOk() (*int64, bool) {
+	if o == nil || o.RtpspeedLimitGb == nil {
+		return nil, false
+	}
+	return o.RtpspeedLimitGb, true
+}
+
+// HasRtpspeedLimitGb returns a boolean if a field has been set.
+func (o *V1Project) HasRtpspeedLimitGb() bool {
+	if o != nil && o.RtpspeedLimitGb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRtpspeedLimitGb gets a reference to the given int64 and assigns it to the RtpspeedLimitGb field.
+func (o *V1Project) SetRtpspeedLimitGb(v int64) {
+	o.RtpspeedLimitGb = &v
+}
+
+func (o V1Project) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Protocol != nil {
-		toSerialize["protocol"] = o.Protocol
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.DestinationIp != nil {
-		toSerialize["destination_ip"] = o.DestinationIp
+	if o.AcceleratorQuota != nil {
+		toSerialize["accelerator_quota"] = o.AcceleratorQuota
 	}
-	if o.DestinationPort != nil {
-		toSerialize["destination_port"] = o.DestinationPort
+	if o.AcceleratorRequestPort != nil {
+		toSerialize["accelerator_request_port"] = o.AcceleratorRequestPort
+	}
+	if o.GlobalturnLimitGb != nil {
+		toSerialize["globalturn_limit_gb"] = o.GlobalturnLimitGb
+	}
+	if o.SipteleportQuota != nil {
+		toSerialize["sipteleport_quota"] = o.SipteleportQuota
+	}
+	if o.SipteleportCallQuota != nil {
+		toSerialize["sipteleport_call_quota"] = o.SipteleportCallQuota
+	}
+	if o.RtpspeedLimitGb != nil {
+		toSerialize["rtpspeed_limit_gb"] = o.RtpspeedLimitGb
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableBody1 struct {
-	value *Body1
+type NullableV1Project struct {
+	value *V1Project
 	isSet bool
 }
 
-func (v NullableBody1) Get() *Body1 {
+func (v NullableV1Project) Get() *V1Project {
 	return v.value
 }
 
-func (v *NullableBody1) Set(val *Body1) {
+func (v *NullableV1Project) Set(val *V1Project) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBody1) IsSet() bool {
+func (v NullableV1Project) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBody1) Unset() {
+func (v *NullableV1Project) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBody1(val *Body1) *NullableBody1 {
-	return &NullableBody1{value: val, isSet: true}
+func NewNullableV1Project(val *V1Project) *NullableV1Project {
+	return &NullableV1Project{value: val, isSet: true}
 }
 
-func (v NullableBody1) MarshalJSON() ([]byte, error) {
+func (v NullableV1Project) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBody1) UnmarshalJSON(src []byte) error {
+func (v *NullableV1Project) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
