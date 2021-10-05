@@ -15,280 +15,136 @@ import (
 	"encoding/json"
 )
 
-// V1Accelerator struct for V1Accelerator
-type V1Accelerator struct {
-	DestinationIp *string `json:"destination_ip,omitempty"`
-	DestinationPort *int64 `json:"destination_port,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	SubspaceIpv4 *string `json:"subspace_ipv4,omitempty"`
-	SubspacePort *int64 `json:"subspace_port,omitempty"`
+// V1ListAcceleratorResponse struct for V1ListAcceleratorResponse
+type V1ListAcceleratorResponse struct {
+	Data *[]V1Accelerator `json:"data,omitempty"`
+	NextPage *V1NextPage `json:"next_page,omitempty"`
 }
 
-// NewV1Accelerator instantiates a new V1Accelerator object
+// NewV1ListAcceleratorResponse instantiates a new V1ListAcceleratorResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1Accelerator() *V1Accelerator {
-	this := V1Accelerator{}
+func NewV1ListAcceleratorResponse() *V1ListAcceleratorResponse {
+	this := V1ListAcceleratorResponse{}
 	return &this
 }
 
-// NewV1AcceleratorWithDefaults instantiates a new V1Accelerator object
+// NewV1ListAcceleratorResponseWithDefaults instantiates a new V1ListAcceleratorResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewV1AcceleratorWithDefaults() *V1Accelerator {
-	this := V1Accelerator{}
+func NewV1ListAcceleratorResponseWithDefaults() *V1ListAcceleratorResponse {
+	this := V1ListAcceleratorResponse{}
 	return &this
 }
 
-// GetDestinationIp returns the DestinationIp field value if set, zero value otherwise.
-func (o *V1Accelerator) GetDestinationIp() string {
-	if o == nil || o.DestinationIp == nil {
-		var ret string
+// GetData returns the Data field value if set, zero value otherwise.
+func (o *V1ListAcceleratorResponse) GetData() []V1Accelerator {
+	if o == nil || o.Data == nil {
+		var ret []V1Accelerator
 		return ret
 	}
-	return *o.DestinationIp
+	return *o.Data
 }
 
-// GetDestinationIpOk returns a tuple with the DestinationIp field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetDestinationIpOk() (*string, bool) {
-	if o == nil || o.DestinationIp == nil {
+func (o *V1ListAcceleratorResponse) GetDataOk() (*[]V1Accelerator, bool) {
+	if o == nil || o.Data == nil {
 		return nil, false
 	}
-	return o.DestinationIp, true
+	return o.Data, true
 }
 
-// HasDestinationIp returns a boolean if a field has been set.
-func (o *V1Accelerator) HasDestinationIp() bool {
-	if o != nil && o.DestinationIp != nil {
+// HasData returns a boolean if a field has been set.
+func (o *V1ListAcceleratorResponse) HasData() bool {
+	if o != nil && o.Data != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationIp gets a reference to the given string and assigns it to the DestinationIp field.
-func (o *V1Accelerator) SetDestinationIp(v string) {
-	o.DestinationIp = &v
+// SetData gets a reference to the given []V1Accelerator and assigns it to the Data field.
+func (o *V1ListAcceleratorResponse) SetData(v []V1Accelerator) {
+	o.Data = &v
 }
 
-// GetDestinationPort returns the DestinationPort field value if set, zero value otherwise.
-func (o *V1Accelerator) GetDestinationPort() int64 {
-	if o == nil || o.DestinationPort == nil {
-		var ret int64
+// GetNextPage returns the NextPage field value if set, zero value otherwise.
+func (o *V1ListAcceleratorResponse) GetNextPage() V1NextPage {
+	if o == nil || o.NextPage == nil {
+		var ret V1NextPage
 		return ret
 	}
-	return *o.DestinationPort
+	return *o.NextPage
 }
 
-// GetDestinationPortOk returns a tuple with the DestinationPort field value if set, nil otherwise
+// GetNextPageOk returns a tuple with the NextPage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetDestinationPortOk() (*int64, bool) {
-	if o == nil || o.DestinationPort == nil {
+func (o *V1ListAcceleratorResponse) GetNextPageOk() (*V1NextPage, bool) {
+	if o == nil || o.NextPage == nil {
 		return nil, false
 	}
-	return o.DestinationPort, true
+	return o.NextPage, true
 }
 
-// HasDestinationPort returns a boolean if a field has been set.
-func (o *V1Accelerator) HasDestinationPort() bool {
-	if o != nil && o.DestinationPort != nil {
+// HasNextPage returns a boolean if a field has been set.
+func (o *V1ListAcceleratorResponse) HasNextPage() bool {
+	if o != nil && o.NextPage != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationPort gets a reference to the given int64 and assigns it to the DestinationPort field.
-func (o *V1Accelerator) SetDestinationPort(v int64) {
-	o.DestinationPort = &v
+// SetNextPage gets a reference to the given V1NextPage and assigns it to the NextPage field.
+func (o *V1ListAcceleratorResponse) SetNextPage(v V1NextPage) {
+	o.NextPage = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *V1Accelerator) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *V1Accelerator) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *V1Accelerator) SetId(v string) {
-	o.Id = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *V1Accelerator) GetName() string {
-	if o == nil || o.Name == nil {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *V1Accelerator) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *V1Accelerator) SetName(v string) {
-	o.Name = &v
-}
-
-// GetSubspaceIpv4 returns the SubspaceIpv4 field value if set, zero value otherwise.
-func (o *V1Accelerator) GetSubspaceIpv4() string {
-	if o == nil || o.SubspaceIpv4 == nil {
-		var ret string
-		return ret
-	}
-	return *o.SubspaceIpv4
-}
-
-// GetSubspaceIpv4Ok returns a tuple with the SubspaceIpv4 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetSubspaceIpv4Ok() (*string, bool) {
-	if o == nil || o.SubspaceIpv4 == nil {
-		return nil, false
-	}
-	return o.SubspaceIpv4, true
-}
-
-// HasSubspaceIpv4 returns a boolean if a field has been set.
-func (o *V1Accelerator) HasSubspaceIpv4() bool {
-	if o != nil && o.SubspaceIpv4 != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSubspaceIpv4 gets a reference to the given string and assigns it to the SubspaceIpv4 field.
-func (o *V1Accelerator) SetSubspaceIpv4(v string) {
-	o.SubspaceIpv4 = &v
-}
-
-// GetSubspacePort returns the SubspacePort field value if set, zero value otherwise.
-func (o *V1Accelerator) GetSubspacePort() int64 {
-	if o == nil || o.SubspacePort == nil {
-		var ret int64
-		return ret
-	}
-	return *o.SubspacePort
-}
-
-// GetSubspacePortOk returns a tuple with the SubspacePort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetSubspacePortOk() (*int64, bool) {
-	if o == nil || o.SubspacePort == nil {
-		return nil, false
-	}
-	return o.SubspacePort, true
-}
-
-// HasSubspacePort returns a boolean if a field has been set.
-func (o *V1Accelerator) HasSubspacePort() bool {
-	if o != nil && o.SubspacePort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSubspacePort gets a reference to the given int64 and assigns it to the SubspacePort field.
-func (o *V1Accelerator) SetSubspacePort(v int64) {
-	o.SubspacePort = &v
-}
-
-func (o V1Accelerator) MarshalJSON() ([]byte, error) {
+func (o V1ListAcceleratorResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DestinationIp != nil {
-		toSerialize["destination_ip"] = o.DestinationIp
+	if o.Data != nil {
+		toSerialize["data"] = o.Data
 	}
-	if o.DestinationPort != nil {
-		toSerialize["destination_port"] = o.DestinationPort
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.SubspaceIpv4 != nil {
-		toSerialize["subspace_ipv4"] = o.SubspaceIpv4
-	}
-	if o.SubspacePort != nil {
-		toSerialize["subspace_port"] = o.SubspacePort
+	if o.NextPage != nil {
+		toSerialize["next_page"] = o.NextPage
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableV1Accelerator struct {
-	value *V1Accelerator
+type NullableV1ListAcceleratorResponse struct {
+	value *V1ListAcceleratorResponse
 	isSet bool
 }
 
-func (v NullableV1Accelerator) Get() *V1Accelerator {
+func (v NullableV1ListAcceleratorResponse) Get() *V1ListAcceleratorResponse {
 	return v.value
 }
 
-func (v *NullableV1Accelerator) Set(val *V1Accelerator) {
+func (v *NullableV1ListAcceleratorResponse) Set(val *V1ListAcceleratorResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableV1Accelerator) IsSet() bool {
+func (v NullableV1ListAcceleratorResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableV1Accelerator) Unset() {
+func (v *NullableV1ListAcceleratorResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableV1Accelerator(val *V1Accelerator) *NullableV1Accelerator {
-	return &NullableV1Accelerator{value: val, isSet: true}
+func NewNullableV1ListAcceleratorResponse(val *V1ListAcceleratorResponse) *NullableV1ListAcceleratorResponse {
+	return &NullableV1ListAcceleratorResponse{value: val, isSet: true}
 }
 
-func (v NullableV1Accelerator) MarshalJSON() ([]byte, error) {
+func (v NullableV1ListAcceleratorResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableV1Accelerator) UnmarshalJSON(src []byte) error {
+func (v *NullableV1ListAcceleratorResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

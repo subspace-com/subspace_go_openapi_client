@@ -15,280 +15,208 @@ import (
 	"encoding/json"
 )
 
-// V1Accelerator struct for V1Accelerator
-type V1Accelerator struct {
-	DestinationIp *string `json:"destination_ip,omitempty"`
-	DestinationPort *int64 `json:"destination_port,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	SubspaceIpv4 *string `json:"subspace_ipv4,omitempty"`
-	SubspacePort *int64 `json:"subspace_port,omitempty"`
+// V1GlobalTurnServer struct for V1GlobalTurnServer
+type V1GlobalTurnServer struct {
+	Username *string `json:"username,omitempty"`
+	Credential *string `json:"credential,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Urls *string `json:"urls,omitempty"`
 }
 
-// NewV1Accelerator instantiates a new V1Accelerator object
+// NewV1GlobalTurnServer instantiates a new V1GlobalTurnServer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1Accelerator() *V1Accelerator {
-	this := V1Accelerator{}
+func NewV1GlobalTurnServer() *V1GlobalTurnServer {
+	this := V1GlobalTurnServer{}
 	return &this
 }
 
-// NewV1AcceleratorWithDefaults instantiates a new V1Accelerator object
+// NewV1GlobalTurnServerWithDefaults instantiates a new V1GlobalTurnServer object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewV1AcceleratorWithDefaults() *V1Accelerator {
-	this := V1Accelerator{}
+func NewV1GlobalTurnServerWithDefaults() *V1GlobalTurnServer {
+	this := V1GlobalTurnServer{}
 	return &this
 }
 
-// GetDestinationIp returns the DestinationIp field value if set, zero value otherwise.
-func (o *V1Accelerator) GetDestinationIp() string {
-	if o == nil || o.DestinationIp == nil {
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *V1GlobalTurnServer) GetUsername() string {
+	if o == nil || o.Username == nil {
 		var ret string
 		return ret
 	}
-	return *o.DestinationIp
+	return *o.Username
 }
 
-// GetDestinationIpOk returns a tuple with the DestinationIp field value if set, nil otherwise
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetDestinationIpOk() (*string, bool) {
-	if o == nil || o.DestinationIp == nil {
+func (o *V1GlobalTurnServer) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
 		return nil, false
 	}
-	return o.DestinationIp, true
+	return o.Username, true
 }
 
-// HasDestinationIp returns a boolean if a field has been set.
-func (o *V1Accelerator) HasDestinationIp() bool {
-	if o != nil && o.DestinationIp != nil {
+// HasUsername returns a boolean if a field has been set.
+func (o *V1GlobalTurnServer) HasUsername() bool {
+	if o != nil && o.Username != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationIp gets a reference to the given string and assigns it to the DestinationIp field.
-func (o *V1Accelerator) SetDestinationIp(v string) {
-	o.DestinationIp = &v
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *V1GlobalTurnServer) SetUsername(v string) {
+	o.Username = &v
 }
 
-// GetDestinationPort returns the DestinationPort field value if set, zero value otherwise.
-func (o *V1Accelerator) GetDestinationPort() int64 {
-	if o == nil || o.DestinationPort == nil {
-		var ret int64
-		return ret
-	}
-	return *o.DestinationPort
-}
-
-// GetDestinationPortOk returns a tuple with the DestinationPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetDestinationPortOk() (*int64, bool) {
-	if o == nil || o.DestinationPort == nil {
-		return nil, false
-	}
-	return o.DestinationPort, true
-}
-
-// HasDestinationPort returns a boolean if a field has been set.
-func (o *V1Accelerator) HasDestinationPort() bool {
-	if o != nil && o.DestinationPort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationPort gets a reference to the given int64 and assigns it to the DestinationPort field.
-func (o *V1Accelerator) SetDestinationPort(v int64) {
-	o.DestinationPort = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *V1Accelerator) GetId() string {
-	if o == nil || o.Id == nil {
+// GetCredential returns the Credential field value if set, zero value otherwise.
+func (o *V1GlobalTurnServer) GetCredential() string {
+	if o == nil || o.Credential == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Credential
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetCredentialOk returns a tuple with the Credential field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+func (o *V1GlobalTurnServer) GetCredentialOk() (*string, bool) {
+	if o == nil || o.Credential == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Credential, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *V1Accelerator) HasId() bool {
-	if o != nil && o.Id != nil {
+// HasCredential returns a boolean if a field has been set.
+func (o *V1GlobalTurnServer) HasCredential() bool {
+	if o != nil && o.Credential != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *V1Accelerator) SetId(v string) {
-	o.Id = &v
+// SetCredential gets a reference to the given string and assigns it to the Credential field.
+func (o *V1GlobalTurnServer) SetCredential(v string) {
+	o.Credential = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *V1Accelerator) GetName() string {
-	if o == nil || o.Name == nil {
+// GetUrl returns the Url field value if set, zero value otherwise.
+func (o *V1GlobalTurnServer) GetUrl() string {
+	if o == nil || o.Url == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Url
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+func (o *V1GlobalTurnServer) GetUrlOk() (*string, bool) {
+	if o == nil || o.Url == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Url, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *V1Accelerator) HasName() bool {
-	if o != nil && o.Name != nil {
+// HasUrl returns a boolean if a field has been set.
+func (o *V1GlobalTurnServer) HasUrl() bool {
+	if o != nil && o.Url != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *V1Accelerator) SetName(v string) {
-	o.Name = &v
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *V1GlobalTurnServer) SetUrl(v string) {
+	o.Url = &v
 }
 
-// GetSubspaceIpv4 returns the SubspaceIpv4 field value if set, zero value otherwise.
-func (o *V1Accelerator) GetSubspaceIpv4() string {
-	if o == nil || o.SubspaceIpv4 == nil {
+// GetUrls returns the Urls field value if set, zero value otherwise.
+func (o *V1GlobalTurnServer) GetUrls() string {
+	if o == nil || o.Urls == nil {
 		var ret string
 		return ret
 	}
-	return *o.SubspaceIpv4
+	return *o.Urls
 }
 
-// GetSubspaceIpv4Ok returns a tuple with the SubspaceIpv4 field value if set, nil otherwise
+// GetUrlsOk returns a tuple with the Urls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetSubspaceIpv4Ok() (*string, bool) {
-	if o == nil || o.SubspaceIpv4 == nil {
+func (o *V1GlobalTurnServer) GetUrlsOk() (*string, bool) {
+	if o == nil || o.Urls == nil {
 		return nil, false
 	}
-	return o.SubspaceIpv4, true
+	return o.Urls, true
 }
 
-// HasSubspaceIpv4 returns a boolean if a field has been set.
-func (o *V1Accelerator) HasSubspaceIpv4() bool {
-	if o != nil && o.SubspaceIpv4 != nil {
+// HasUrls returns a boolean if a field has been set.
+func (o *V1GlobalTurnServer) HasUrls() bool {
+	if o != nil && o.Urls != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSubspaceIpv4 gets a reference to the given string and assigns it to the SubspaceIpv4 field.
-func (o *V1Accelerator) SetSubspaceIpv4(v string) {
-	o.SubspaceIpv4 = &v
+// SetUrls gets a reference to the given string and assigns it to the Urls field.
+func (o *V1GlobalTurnServer) SetUrls(v string) {
+	o.Urls = &v
 }
 
-// GetSubspacePort returns the SubspacePort field value if set, zero value otherwise.
-func (o *V1Accelerator) GetSubspacePort() int64 {
-	if o == nil || o.SubspacePort == nil {
-		var ret int64
-		return ret
-	}
-	return *o.SubspacePort
-}
-
-// GetSubspacePortOk returns a tuple with the SubspacePort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *V1Accelerator) GetSubspacePortOk() (*int64, bool) {
-	if o == nil || o.SubspacePort == nil {
-		return nil, false
-	}
-	return o.SubspacePort, true
-}
-
-// HasSubspacePort returns a boolean if a field has been set.
-func (o *V1Accelerator) HasSubspacePort() bool {
-	if o != nil && o.SubspacePort != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSubspacePort gets a reference to the given int64 and assigns it to the SubspacePort field.
-func (o *V1Accelerator) SetSubspacePort(v int64) {
-	o.SubspacePort = &v
-}
-
-func (o V1Accelerator) MarshalJSON() ([]byte, error) {
+func (o V1GlobalTurnServer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DestinationIp != nil {
-		toSerialize["destination_ip"] = o.DestinationIp
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
-	if o.DestinationPort != nil {
-		toSerialize["destination_port"] = o.DestinationPort
+	if o.Credential != nil {
+		toSerialize["credential"] = o.Credential
 	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	if o.Url != nil {
+		toSerialize["url"] = o.Url
 	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.SubspaceIpv4 != nil {
-		toSerialize["subspace_ipv4"] = o.SubspaceIpv4
-	}
-	if o.SubspacePort != nil {
-		toSerialize["subspace_port"] = o.SubspacePort
+	if o.Urls != nil {
+		toSerialize["urls"] = o.Urls
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableV1Accelerator struct {
-	value *V1Accelerator
+type NullableV1GlobalTurnServer struct {
+	value *V1GlobalTurnServer
 	isSet bool
 }
 
-func (v NullableV1Accelerator) Get() *V1Accelerator {
+func (v NullableV1GlobalTurnServer) Get() *V1GlobalTurnServer {
 	return v.value
 }
 
-func (v *NullableV1Accelerator) Set(val *V1Accelerator) {
+func (v *NullableV1GlobalTurnServer) Set(val *V1GlobalTurnServer) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableV1Accelerator) IsSet() bool {
+func (v NullableV1GlobalTurnServer) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableV1Accelerator) Unset() {
+func (v *NullableV1GlobalTurnServer) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableV1Accelerator(val *V1Accelerator) *NullableV1Accelerator {
-	return &NullableV1Accelerator{value: val, isSet: true}
+func NewNullableV1GlobalTurnServer(val *V1GlobalTurnServer) *NullableV1GlobalTurnServer {
+	return &NullableV1GlobalTurnServer{value: val, isSet: true}
 }
 
-func (v NullableV1Accelerator) MarshalJSON() ([]byte, error) {
+func (v NullableV1GlobalTurnServer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableV1Accelerator) UnmarshalJSON(src []byte) error {
+func (v *NullableV1GlobalTurnServer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

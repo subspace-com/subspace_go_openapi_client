@@ -4,11 +4,11 @@ All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SipTeleportServiceCreate**](SipTeleportServiceApi.md#SipTeleportServiceCreate) | **Post** /v1/sip-teleports | 
-[**SipTeleportServiceDelete**](SipTeleportServiceApi.md#SipTeleportServiceDelete) | **Delete** /v1/sip-teleports/{id} | 
-[**SipTeleportServiceGet**](SipTeleportServiceApi.md#SipTeleportServiceGet) | **Get** /v1/sip-teleports/{id} | 
-[**SipTeleportServiceList**](SipTeleportServiceApi.md#SipTeleportServiceList) | **Get** /v1/sip-teleports | 
-[**SipTeleportServiceUpdate**](SipTeleportServiceApi.md#SipTeleportServiceUpdate) | **Put** /v1/sip-teleports/{id} | 
+[**SipTeleportServiceCreate**](SipTeleportServiceApi.md#SipTeleportServiceCreate) | **Post** /v1/sipteleport | 
+[**SipTeleportServiceDelete**](SipTeleportServiceApi.md#SipTeleportServiceDelete) | **Delete** /v1/sipteleport/{id} | 
+[**SipTeleportServiceGet**](SipTeleportServiceApi.md#SipTeleportServiceGet) | **Get** /v1/sipteleport/{id} | 
+[**SipTeleportServiceList**](SipTeleportServiceApi.md#SipTeleportServiceList) | **Get** /v1/sipteleport | 
+[**SipTeleportServiceUpdate**](SipTeleportServiceApi.md#SipTeleportServiceUpdate) | **Put** /v1/sipteleport/{id} | 
 
 
 

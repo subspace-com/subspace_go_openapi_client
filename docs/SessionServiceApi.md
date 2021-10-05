@@ -4,7 +4,7 @@ All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SessionServiceList**](SessionServiceApi.md#SessionServiceList) | **Get** /v1/accelerators/{accelerator_id}/sessions | 
+[**SessionServiceList**](SessionServiceApi.md#SessionServiceList) | **Get** /v1/accelerator/{accelerator_id}/session | 
 
 
 

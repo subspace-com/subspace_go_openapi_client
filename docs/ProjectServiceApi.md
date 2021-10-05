@@ -4,10 +4,10 @@ All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ProjectServiceCreate**](ProjectServiceApi.md#ProjectServiceCreate) | **Post** /v1/projects | 
-[**ProjectServiceGet**](ProjectServiceApi.md#ProjectServiceGet) | **Get** /v1/projects/{id} | 
-[**ProjectServiceList**](ProjectServiceApi.md#ProjectServiceList) | **Get** /v1/projects | 
-[**ProjectServiceUpdate**](ProjectServiceApi.md#ProjectServiceUpdate) | **Put** /v1/projects/{id} | 
+[**ProjectServiceCreate**](ProjectServiceApi.md#ProjectServiceCreate) | **Post** /v1/project | 
+[**ProjectServiceGet**](ProjectServiceApi.md#ProjectServiceGet) | **Get** /v1/project/{id} | 
+[**ProjectServiceList**](ProjectServiceApi.md#ProjectServiceList) | **Get** /v1/project | 
+[**ProjectServiceUpdate**](ProjectServiceApi.md#ProjectServiceUpdate) | **Put** /v1/project/{id} | 
 
 
 

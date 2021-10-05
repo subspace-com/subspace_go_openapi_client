@@ -17,7 +17,6 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"strings"
 )
 
 // Linger please
@@ -25,76 +24,56 @@ var (
 	_ _context.Context
 )
 
-// SessionServiceApiService SessionServiceApi service
-type SessionServiceApiService service
+// GlobalTurnServiceApiService GlobalTurnServiceApi service
+type GlobalTurnServiceApiService service
 
-type ApiSessionServiceListRequest struct {
+type ApiGlobalTurnServiceGetGlobalTurnRequest struct {
 	ctx _context.Context
-	ApiService *SessionServiceApiService
-	acceleratorId string
-	before *string
-	limit *int64
+	ApiService *GlobalTurnServiceApiService
 }
 
-func (r ApiSessionServiceListRequest) Before(before string) ApiSessionServiceListRequest {
-	r.before = &before
-	return r
-}
-func (r ApiSessionServiceListRequest) Limit(limit int64) ApiSessionServiceListRequest {
-	r.limit = &limit
-	return r
-}
 
-func (r ApiSessionServiceListRequest) Execute() (V1ListSessionsResponse, *_nethttp.Response, error) {
-	return r.ApiService.SessionServiceListExecute(r)
+func (r ApiGlobalTurnServiceGetGlobalTurnRequest) Execute() (V1GlobalTurnResponse, *_nethttp.Response, error) {
+	return r.ApiService.GlobalTurnServiceGetGlobalTurnExecute(r)
 }
 
 /*
- * SessionServiceList Method for SessionServiceList
+ * GlobalTurnServiceGetGlobalTurn Method for GlobalTurnServiceGetGlobalTurn
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param acceleratorId
- * @return ApiSessionServiceListRequest
+ * @return ApiGlobalTurnServiceGetGlobalTurnRequest
  */
-func (a *SessionServiceApiService) SessionServiceList(ctx _context.Context, acceleratorId string) ApiSessionServiceListRequest {
-	return ApiSessionServiceListRequest{
+func (a *GlobalTurnServiceApiService) GlobalTurnServiceGetGlobalTurn(ctx _context.Context) ApiGlobalTurnServiceGetGlobalTurnRequest {
+	return ApiGlobalTurnServiceGetGlobalTurnRequest{
 		ApiService: a,
 		ctx: ctx,
-		acceleratorId: acceleratorId,
 	}
 }
 
 /*
  * Execute executes the request
- * @return V1ListSessionsResponse
+ * @return V1GlobalTurnResponse
  */
-func (a *SessionServiceApiService) SessionServiceListExecute(r ApiSessionServiceListRequest) (V1ListSessionsResponse, *_nethttp.Response, error) {
+func (a *GlobalTurnServiceApiService) GlobalTurnServiceGetGlobalTurnExecute(r ApiGlobalTurnServiceGetGlobalTurnRequest) (V1GlobalTurnResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  V1ListSessionsResponse
+		localVarReturnValue  V1GlobalTurnResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SessionServiceApiService.SessionServiceList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTurnServiceApiService.GlobalTurnServiceGetGlobalTurn")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/accelerator/{accelerator_id}/session"
-	localVarPath = strings.Replace(localVarPath, "{"+"accelerator_id"+"}", _neturl.PathEscape(parameterToString(r.acceleratorId, "")), -1)
+	localVarPath := localBasePath + "/v1/globalturn"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.before != nil {
-		localVarQueryParams.Add("before", parameterToString(*r.before, ""))
-	}
-	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

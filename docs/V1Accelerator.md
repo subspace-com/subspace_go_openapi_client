@@ -8,8 +8,6 @@ Name | Type | Description | Notes
 **DestinationPort** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Protocol** | Pointer to [**V1Protocol**](V1Protocol.md) |  | [optional] [default to UDP]
-**SubspaceIp** | Pointer to **string** |  | [optional] 
 **SubspaceIpv4** | Pointer to **string** |  | [optional] 
 **SubspacePort** | Pointer to **int64** |  | [optional] 
 
@@ -131,56 +129,6 @@ SetName sets Name field to given value.
 `func (o *V1Accelerator) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetProtocol
-
-`func (o *V1Accelerator) GetProtocol() V1Protocol`
-
-GetProtocol returns the Protocol field if non-nil, zero value otherwise.
-
-### GetProtocolOk
-
-`func (o *V1Accelerator) GetProtocolOk() (*V1Protocol, bool)`
-
-GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProtocol
-
-`func (o *V1Accelerator) SetProtocol(v V1Protocol)`
-
-SetProtocol sets Protocol field to given value.
-
-### HasProtocol
-
-`func (o *V1Accelerator) HasProtocol() bool`
-
-HasProtocol returns a boolean if a field has been set.
-
-### GetSubspaceIp
-
-`func (o *V1Accelerator) GetSubspaceIp() string`
-
-GetSubspaceIp returns the SubspaceIp field if non-nil, zero value otherwise.
-
-### GetSubspaceIpOk
-
-`func (o *V1Accelerator) GetSubspaceIpOk() (*string, bool)`
-
-GetSubspaceIpOk returns a tuple with the SubspaceIp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSubspaceIp
-
-`func (o *V1Accelerator) SetSubspaceIp(v string)`
-
-SetSubspaceIp sets SubspaceIp field to given value.
-
-### HasSubspaceIp
-
-`func (o *V1Accelerator) HasSubspaceIp() bool`
-
-HasSubspaceIp returns a boolean if a field has been set.
 
 ### GetSubspaceIpv4
 

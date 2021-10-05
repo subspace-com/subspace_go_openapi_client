@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Sessions** | Pointer to [**[]V1Session**](V1Session.md) |  | [optional] 
+**Data** | Pointer to [**[]V1Session**](V1Session.md) |  | [optional] 
 **NextPage** | Pointer to [**V1NextPage**](V1NextPage.md) |  | [optional] 
 
 ## Methods
@@ -26,30 +26,30 @@ NewV1ListSessionsResponseWithDefaults instantiates a new V1ListSessionsResponse 
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSessions
+### GetData
 
-`func (o *V1ListSessionsResponse) GetSessions() []V1Session`
+`func (o *V1ListSessionsResponse) GetData() []V1Session`
 
-GetSessions returns the Sessions field if non-nil, zero value otherwise.
+GetData returns the Data field if non-nil, zero value otherwise.
 
-### GetSessionsOk
+### GetDataOk
 
-`func (o *V1ListSessionsResponse) GetSessionsOk() (*[]V1Session, bool)`
+`func (o *V1ListSessionsResponse) GetDataOk() (*[]V1Session, bool)`
 
-GetSessionsOk returns a tuple with the Sessions field if it's non-nil, zero value otherwise
+GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSessions
+### SetData
 
-`func (o *V1ListSessionsResponse) SetSessions(v []V1Session)`
+`func (o *V1ListSessionsResponse) SetData(v []V1Session)`
 
-SetSessions sets Sessions field to given value.
+SetData sets Data field to given value.
 
-### HasSessions
+### HasData
 
-`func (o *V1ListSessionsResponse) HasSessions() bool`
+`func (o *V1ListSessionsResponse) HasData() bool`
 
-HasSessions returns a boolean if a field has been set.
+HasData returns a boolean if a field has been set.
 
 ### GetNextPage
 

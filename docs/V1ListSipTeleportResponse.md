@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SipTeleports** | Pointer to [**[]V1SipTeleportResponse**](V1SipTeleportResponse.md) |  | [optional] 
+**Data** | Pointer to [**[]V1SipTeleportResponse**](V1SipTeleportResponse.md) |  | [optional] 
 **NextPage** | Pointer to [**V1NextPage**](V1NextPage.md) |  | [optional] 
 
 ## Methods
@@ -26,30 +26,30 @@ NewV1ListSipTeleportResponseWithDefaults instantiates a new V1ListSipTeleportRes
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSipTeleports
+### GetData
 
-`func (o *V1ListSipTeleportResponse) GetSipTeleports() []V1SipTeleportResponse`
+`func (o *V1ListSipTeleportResponse) GetData() []V1SipTeleportResponse`
 
-GetSipTeleports returns the SipTeleports field if non-nil, zero value otherwise.
+GetData returns the Data field if non-nil, zero value otherwise.
 
-### GetSipTeleportsOk
+### GetDataOk
 
-`func (o *V1ListSipTeleportResponse) GetSipTeleportsOk() (*[]V1SipTeleportResponse, bool)`
+`func (o *V1ListSipTeleportResponse) GetDataOk() (*[]V1SipTeleportResponse, bool)`
 
-GetSipTeleportsOk returns a tuple with the SipTeleports field if it's non-nil, zero value otherwise
+GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSipTeleports
+### SetData
 
-`func (o *V1ListSipTeleportResponse) SetSipTeleports(v []V1SipTeleportResponse)`
+`func (o *V1ListSipTeleportResponse) SetData(v []V1SipTeleportResponse)`
 
-SetSipTeleports sets SipTeleports field to given value.
+SetData sets Data field to given value.
 
-### HasSipTeleports
+### HasData
 
-`func (o *V1ListSipTeleportResponse) HasSipTeleports() bool`
+`func (o *V1ListSipTeleportResponse) HasData() bool`
 
-HasSipTeleports returns a boolean if a field has been set.
+HasData returns a boolean if a field has been set.
 
 ### GetNextPage
 

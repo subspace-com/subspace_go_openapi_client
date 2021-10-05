@@ -23,7 +23,7 @@ type V1Protocol string
 const (
 	UDP V1Protocol = "udp"
 	TCP V1Protocol = "tcp"
-	UDP_TCP V1Protocol = "udp_tcp"
+	UDP_TCPS V1Protocol = "udp_tcp"
 )
 
 var allowedV1ProtocolEnumValues = []V1Protocol{

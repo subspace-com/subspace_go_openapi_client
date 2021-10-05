@@ -4,11 +4,11 @@ All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AcceleratorServiceCreate**](AcceleratorServiceApi.md#AcceleratorServiceCreate) | **Post** /v1/accelerators | 
-[**AcceleratorServiceDelete**](AcceleratorServiceApi.md#AcceleratorServiceDelete) | **Delete** /v1/accelerators/{id} | 
-[**AcceleratorServiceGet**](AcceleratorServiceApi.md#AcceleratorServiceGet) | **Get** /v1/accelerators/{id} | 
-[**AcceleratorServiceList**](AcceleratorServiceApi.md#AcceleratorServiceList) | **Get** /v1/accelerators | 
-[**AcceleratorServiceUpdate**](AcceleratorServiceApi.md#AcceleratorServiceUpdate) | **Put** /v1/accelerators/{id} | 
+[**AcceleratorServiceCreate**](AcceleratorServiceApi.md#AcceleratorServiceCreate) | **Post** /v1/accelerator | 
+[**AcceleratorServiceDelete**](AcceleratorServiceApi.md#AcceleratorServiceDelete) | **Delete** /v1/accelerator/{id} | 
+[**AcceleratorServiceGet**](AcceleratorServiceApi.md#AcceleratorServiceGet) | **Get** /v1/accelerator/{id} | 
+[**AcceleratorServiceList**](AcceleratorServiceApi.md#AcceleratorServiceList) | **Get** /v1/accelerator | 
+[**AcceleratorServiceUpdate**](AcceleratorServiceApi.md#AcceleratorServiceUpdate) | **Put** /v1/accelerator/{id} | 
 
 
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ## AcceleratorServiceList
 
-> V1ListAcceleratorsResponse AcceleratorServiceList(ctx).Before(before).Limit(limit).Execute()
+> V1ListAcceleratorResponse AcceleratorServiceList(ctx).Before(before).Limit(limit).Execute()
 
 
 
@@ -243,7 +243,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AcceleratorServiceApi.AcceleratorServiceList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AcceleratorServiceList`: V1ListAcceleratorsResponse
+    // response from `AcceleratorServiceList`: V1ListAcceleratorResponse
     fmt.Fprintf(os.Stdout, "Response from `AcceleratorServiceApi.AcceleratorServiceList`: %v\n", resp)
 }
 ```
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1ListAcceleratorsResponse**](V1ListAcceleratorsResponse.md)
+[**V1ListAcceleratorResponse**](V1ListAcceleratorResponse.md)
 
 ### Authorization
 
