@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ## AcceleratorServiceList
 
-> V1ListAcceleratorResponse AcceleratorServiceList(ctx).Before(before).Limit(limit).Execute()
+> V1ListAcceleratorResponse AcceleratorServiceList(ctx).Before(before).Limit(limit).Name(name).Execute()
 
 
 
@@ -235,10 +235,11 @@ import (
 func main() {
     before := "before_example" // string |  (optional)
     limit := int64(789) // int64 |  (optional)
+    name := "name_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AcceleratorServiceApi.AcceleratorServiceList(context.Background()).Before(before).Limit(limit).Execute()
+    resp, r, err := api_client.AcceleratorServiceApi.AcceleratorServiceList(context.Background()).Before(before).Limit(limit).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AcceleratorServiceApi.AcceleratorServiceList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,6 +262,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **before** | **string** |  | 
  **limit** | **int64** |  | 
+ **name** | **string** |  | 
 
 ### Return type
 

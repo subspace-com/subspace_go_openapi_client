@@ -18,6 +18,7 @@ import (
 // V1GlobalTurnResponse struct for V1GlobalTurnResponse
 type V1GlobalTurnResponse struct {
 	IceServers *[]V1GlobalTurnServer `json:"ice_servers,omitempty"`
+	Ttl *int64 `json:"ttl,omitempty"`
 }
 
 // NewV1GlobalTurnResponse instantiates a new V1GlobalTurnResponse object
@@ -69,10 +70,45 @@ func (o *V1GlobalTurnResponse) SetIceServers(v []V1GlobalTurnServer) {
 	o.IceServers = &v
 }
 
+// GetTtl returns the Ttl field value if set, zero value otherwise.
+func (o *V1GlobalTurnResponse) GetTtl() int64 {
+	if o == nil || o.Ttl == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1GlobalTurnResponse) GetTtlOk() (*int64, bool) {
+	if o == nil || o.Ttl == nil {
+		return nil, false
+	}
+	return o.Ttl, true
+}
+
+// HasTtl returns a boolean if a field has been set.
+func (o *V1GlobalTurnResponse) HasTtl() bool {
+	if o != nil && o.Ttl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given int64 and assigns it to the Ttl field.
+func (o *V1GlobalTurnResponse) SetTtl(v int64) {
+	o.Ttl = &v
+}
+
 func (o V1GlobalTurnResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.IceServers != nil {
 		toSerialize["ice_servers"] = o.IceServers
+	}
+	if o.Ttl != nil {
+		toSerialize["ttl"] = o.Ttl
 	}
 	return json.Marshal(toSerialize)
 }

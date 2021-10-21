@@ -21,8 +21,8 @@ type V1TransportType string
 
 // List of v1TransportType
 const (
-	UDP_TCPS V1TransportType = "UDP_TCP"
-	TLSS V1TransportType = "TLS"
+	UDP_TCP V1TransportType = "UDP_TCP"
+	TLS V1TransportType = "TLS"
 )
 
 var allowedV1TransportTypeEnumValues = []V1TransportType{

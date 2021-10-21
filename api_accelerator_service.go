@@ -563,6 +563,7 @@ type ApiAcceleratorServiceListRequest struct {
 	ApiService *AcceleratorServiceApiService
 	before *string
 	limit *int64
+	name *string
 }
 
 func (r ApiAcceleratorServiceListRequest) Before(before string) ApiAcceleratorServiceListRequest {
@@ -571,6 +572,10 @@ func (r ApiAcceleratorServiceListRequest) Before(before string) ApiAcceleratorSe
 }
 func (r ApiAcceleratorServiceListRequest) Limit(limit int64) ApiAcceleratorServiceListRequest {
 	r.limit = &limit
+	return r
+}
+func (r ApiAcceleratorServiceListRequest) Name(name string) ApiAcceleratorServiceListRequest {
+	r.name = &name
 	return r
 }
 
@@ -620,6 +625,9 @@ func (a *AcceleratorServiceApiService) AcceleratorServiceListExecute(r ApiAccele
 	}
 	if r.limit != nil {
 		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

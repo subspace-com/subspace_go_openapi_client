@@ -27,7 +27,7 @@ type V1TeleportAddresses struct {
 // will change when the set of required properties is changed
 func NewV1TeleportAddresses() *V1TeleportAddresses {
 	this := V1TeleportAddresses{}
-	var transportType V1TransportType = UDP_TCPS
+	var transportType V1TransportType = UDP_TCP
 	this.TransportType = &transportType
 	return &this
 }
@@ -37,7 +37,7 @@ func NewV1TeleportAddresses() *V1TeleportAddresses {
 // but it doesn't guarantee that properties required by API are set
 func NewV1TeleportAddressesWithDefaults() *V1TeleportAddresses {
 	this := V1TeleportAddresses{}
-	var transportType V1TransportType = UDP_TCPS
+	var transportType V1TransportType = UDP_TCP
 	this.TransportType = &transportType
 	return &this
 }

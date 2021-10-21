@@ -124,6 +124,13 @@ paths:
           format: int64
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -467,6 +474,8 @@ paths:
           description: Edit conflict
       tags:
       - AcceleratorService
+  /v1/accelerators: {}
+  /v1/accelerators/{id}: {}
   /v1/sip-teleports: {}
   /v1/sip-teleports/{id}: {}
   /v1/sipteleport:
@@ -815,6 +824,84 @@ paths:
   /v1/accelerator/{accelerator_id}/session:
     get:
       operationId: SessionService_List
+      parameters:
+      - explode: false
+        in: path
+        name: accelerator_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: before
+        required: false
+        schema:
+          format: uint64
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListSessionsResponse'
+          description: A successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Access token is missing or invalid
+        "402":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Quota exceeded
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Not authorized
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Returned when the resource does not exist.
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Too many client requests
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - SessionService
+  /v1/accelerators/{accelerator_id}/sessions:
+    get:
+      operationId: SessionService_List2
       parameters:
       - explode: false
         in: path
@@ -1350,11 +1437,15 @@ components:
           credential: credential
           url: url
           username: username
+        ttl: 0
       properties:
         ice_servers:
           items:
             $ref: '#/components/schemas/v1GlobalTurnServer'
           type: array
+        ttl:
+          format: int64
+          type: integer
       type: object
     v1GlobalTurnServer:
       example:
@@ -1417,6 +1508,9 @@ components:
           type: string
         destination:
           description: Destination of SIPTeleport
+          type: string
+        status:
+          description: 'Enum: [ ENABLED, DISABLED ]'
           type: string
       required:
       - destination
