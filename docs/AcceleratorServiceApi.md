@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewBody("Protocol_example", "Name_example", "DestinationIp_example", int32(123)) // Body | Required parameters to create a new PacketAccelerator.  NOTE- only subspace_port is optional
+    body := *openapiclient.NewBody("Name_example", "DestinationIp_example", int32(123)) // Body | Required parameters to create a new PacketAccelerator.
     idempotencyKey := "idempotencyKey_example" // string | Value is the returned etag of a get request.  If a retry sends an Idempotency-Key that has been seen before, the existing accelerator is returned with the status code of 200 (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -57,7 +57,7 @@ Other parameters are passed through a pointer to a apiAcceleratorServiceCreateRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body**](Body.md) | Required parameters to create a new PacketAccelerator.  NOTE- only subspace_port is optional | 
+ **body** | [**Body**](Body.md) | Required parameters to create a new PacketAccelerator. | 
  **idempotencyKey** | **string** | Value is the returned etag of a get request.  If a retry sends an Idempotency-Key that has been seen before, the existing accelerator is returned with the status code of 200 | 
 
 ### Return type
@@ -302,7 +302,7 @@ import (
 
 func main() {
     id := "id_example" // string | 
-    body1 := *openapiclient.NewBody1() // Body1 | Parameters to update an existing PacketAccelerator, minimum requirement of one of them defined to update
+    body1 := *openapiclient.NewBody1() // Body1 | Parameters to update an existing PacketAccelerator
     ifMatch := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -333,7 +333,7 @@ Other parameters are passed through a pointer to a apiAcceleratorServiceUpdateRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body1** | [**Body1**](Body1.md) | Parameters to update an existing PacketAccelerator, minimum requirement of one of them defined to update | 
+ **body1** | [**Body1**](Body1.md) | Parameters to update an existing PacketAccelerator | 
  **ifMatch** | **int32** |  | 
 
 ### Return type

@@ -300,7 +300,7 @@ import (
 
 func main() {
     id := "id_example" // string | 
-    v1UpdateSipTeleport := *openapiclient.NewV1UpdateSipTeleport("Name_example", "Destination_example", openapiclient.v1SipTeleportStatus("DISABLED")) // V1UpdateSipTeleport | Parameters to update an existing SIPTeleport, minimum requirement of one of them defined to update
+    v1UpdateSipTeleport := *openapiclient.NewV1UpdateSipTeleport("Name_example", "Destination_example", openapiclient.v1SipTeleportStatus("UNKNOWN")) // V1UpdateSipTeleport | Parameters to update an existing SIPTeleport, minimum requirement of one of them defined to update
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

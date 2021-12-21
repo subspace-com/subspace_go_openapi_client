@@ -4,17 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Protocol** | **string** | udp or tcp | 
 **Name** | **string** | Name of PacketAccelerator | 
 **DestinationIp** | **string** | Destination IP, e.g. 1.2.3.4 | 
 **DestinationPort** | **int32** | Destination port, e.g. 443 | 
-**SubspacePort** | Pointer to **int32** | Desired Subspace-assigned ingress port, optional | [optional] 
+**SubspacePort** | Pointer to **int32** | Optional per plan, Specify the Subspace-returned ingress port | [optional] 
 
 ## Methods
 
 ### NewBody
 
-`func NewBody(protocol string, name string, destinationIp string, destinationPort int32, ) *Body`
+`func NewBody(name string, destinationIp string, destinationPort int32, ) *Body`
 
 NewBody instantiates a new Body object
 This constructor will assign default values to properties that have it defined,
@@ -28,26 +27,6 @@ will change when the set of required properties is changed
 NewBodyWithDefaults instantiates a new Body object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetProtocol
-
-`func (o *Body) GetProtocol() string`
-
-GetProtocol returns the Protocol field if non-nil, zero value otherwise.
-
-### GetProtocolOk
-
-`func (o *Body) GetProtocolOk() (*string, bool)`
-
-GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProtocol
-
-`func (o *Body) SetProtocol(v string)`
-
-SetProtocol sets Protocol field to given value.
-
 
 ### GetName
 

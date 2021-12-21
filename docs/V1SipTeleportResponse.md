@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Destination** | Pointer to **string** |  | [optional] 
 **TeleportEntryPoints** | Pointer to [**[]V1TeleportAddresses**](V1TeleportAddresses.md) |  | [optional] 
-**Status** | Pointer to [**V1SipTeleportStatus**](V1SipTeleportStatus.md) |  | [optional] [default to DISABLED]
+**Status** | Pointer to [**V1SipTeleportStatus**](V1SipTeleportStatus.md) |  | [optional] [default to UNKNOWN]
 **DateCreated** | Pointer to **time.Time** |  | [optional] 
 **DateUpdated** | Pointer to **time.Time** |  | [optional] 
 

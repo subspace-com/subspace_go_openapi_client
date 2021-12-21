@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of SIPTeleport | 
 **Destination** | **string** | Destination of SIPTeleport | 
-**Status** | [**V1SipTeleportStatus**](V1SipTeleportStatus.md) |  | [default to DISABLED]
+**Status** | [**V1SipTeleportStatus**](V1SipTeleportStatus.md) |  | [default to UNKNOWN]
 
 ## Methods
 

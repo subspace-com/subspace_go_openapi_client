@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DestinationIp** | Pointer to **string** |  | [optional] 
-**DestinationPort** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**DestinationIp** | Pointer to **string** |  | [optional] 
+**DestinationPort** | Pointer to **int64** |  | [optional] 
 **SubspaceIpv4** | Pointer to **string** |  | [optional] 
 **SubspacePort** | Pointer to **int64** |  | [optional] 
 
@@ -29,56 +29,6 @@ will change when the set of required properties is changed
 NewV1AcceleratorWithDefaults instantiates a new V1Accelerator object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDestinationIp
-
-`func (o *V1Accelerator) GetDestinationIp() string`
-
-GetDestinationIp returns the DestinationIp field if non-nil, zero value otherwise.
-
-### GetDestinationIpOk
-
-`func (o *V1Accelerator) GetDestinationIpOk() (*string, bool)`
-
-GetDestinationIpOk returns a tuple with the DestinationIp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDestinationIp
-
-`func (o *V1Accelerator) SetDestinationIp(v string)`
-
-SetDestinationIp sets DestinationIp field to given value.
-
-### HasDestinationIp
-
-`func (o *V1Accelerator) HasDestinationIp() bool`
-
-HasDestinationIp returns a boolean if a field has been set.
-
-### GetDestinationPort
-
-`func (o *V1Accelerator) GetDestinationPort() int64`
-
-GetDestinationPort returns the DestinationPort field if non-nil, zero value otherwise.
-
-### GetDestinationPortOk
-
-`func (o *V1Accelerator) GetDestinationPortOk() (*int64, bool)`
-
-GetDestinationPortOk returns a tuple with the DestinationPort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDestinationPort
-
-`func (o *V1Accelerator) SetDestinationPort(v int64)`
-
-SetDestinationPort sets DestinationPort field to given value.
-
-### HasDestinationPort
-
-`func (o *V1Accelerator) HasDestinationPort() bool`
-
-HasDestinationPort returns a boolean if a field has been set.
 
 ### GetId
 
@@ -129,6 +79,56 @@ SetName sets Name field to given value.
 `func (o *V1Accelerator) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetDestinationIp
+
+`func (o *V1Accelerator) GetDestinationIp() string`
+
+GetDestinationIp returns the DestinationIp field if non-nil, zero value otherwise.
+
+### GetDestinationIpOk
+
+`func (o *V1Accelerator) GetDestinationIpOk() (*string, bool)`
+
+GetDestinationIpOk returns a tuple with the DestinationIp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationIp
+
+`func (o *V1Accelerator) SetDestinationIp(v string)`
+
+SetDestinationIp sets DestinationIp field to given value.
+
+### HasDestinationIp
+
+`func (o *V1Accelerator) HasDestinationIp() bool`
+
+HasDestinationIp returns a boolean if a field has been set.
+
+### GetDestinationPort
+
+`func (o *V1Accelerator) GetDestinationPort() int64`
+
+GetDestinationPort returns the DestinationPort field if non-nil, zero value otherwise.
+
+### GetDestinationPortOk
+
+`func (o *V1Accelerator) GetDestinationPortOk() (*int64, bool)`
+
+GetDestinationPortOk returns a tuple with the DestinationPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationPort
+
+`func (o *V1Accelerator) SetDestinationPort(v int64)`
+
+SetDestinationPort sets DestinationPort field to given value.
+
+### HasDestinationPort
+
+`func (o *V1Accelerator) HasDestinationPort() bool`
+
+HasDestinationPort returns a boolean if a field has been set.
 
 ### GetSubspaceIpv4
 
