@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
 **DestinationIp** | Pointer to **string** |  | [optional] 
 **DestinationPort** | Pointer to **int64** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 **SubspaceIpv4** | Pointer to **string** |  | [optional] 
 **SubspacePort** | Pointer to **int64** |  | [optional] 
 
@@ -29,56 +29,6 @@ will change when the set of required properties is changed
 NewV1AcceleratorWithDefaults instantiates a new V1Accelerator object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *V1Accelerator) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *V1Accelerator) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *V1Accelerator) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *V1Accelerator) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetName
-
-`func (o *V1Accelerator) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *V1Accelerator) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *V1Accelerator) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *V1Accelerator) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDestinationIp
 
@@ -129,6 +79,56 @@ SetDestinationPort sets DestinationPort field to given value.
 `func (o *V1Accelerator) HasDestinationPort() bool`
 
 HasDestinationPort returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *V1Accelerator) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *V1Accelerator) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *V1Accelerator) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *V1Accelerator) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *V1Accelerator) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *V1Accelerator) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *V1Accelerator) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *V1Accelerator) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetSubspaceIpv4
 

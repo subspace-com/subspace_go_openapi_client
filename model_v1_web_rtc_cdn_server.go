@@ -15,101 +15,172 @@ import (
 	"encoding/json"
 )
 
-// Body1 struct for Body1
-type Body1 struct {
-	// Name of PacketAccelerator
-	Name *string `json:"name,omitempty"`
+// V1WebRtcCdnServer struct for V1WebRtcCdnServer
+type V1WebRtcCdnServer struct {
+	Username *string `json:"username,omitempty"`
+	Credential *string `json:"credential,omitempty"`
+	Urls *string `json:"urls,omitempty"`
 }
 
-// NewBody1 instantiates a new Body1 object
+// NewV1WebRtcCdnServer instantiates a new V1WebRtcCdnServer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBody1() *Body1 {
-	this := Body1{}
+func NewV1WebRtcCdnServer() *V1WebRtcCdnServer {
+	this := V1WebRtcCdnServer{}
 	return &this
 }
 
-// NewBody1WithDefaults instantiates a new Body1 object
+// NewV1WebRtcCdnServerWithDefaults instantiates a new V1WebRtcCdnServer object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBody1WithDefaults() *Body1 {
-	this := Body1{}
+func NewV1WebRtcCdnServerWithDefaults() *V1WebRtcCdnServer {
+	this := V1WebRtcCdnServer{}
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Body1) GetName() string {
-	if o == nil || o.Name == nil {
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *V1WebRtcCdnServer) GetUsername() string {
+	if o == nil || o.Username == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Username
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Body1) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+func (o *V1WebRtcCdnServer) GetUsernameOk() (*string, bool) {
+	if o == nil || o.Username == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Username, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Body1) HasName() bool {
-	if o != nil && o.Name != nil {
+// HasUsername returns a boolean if a field has been set.
+func (o *V1WebRtcCdnServer) HasUsername() bool {
+	if o != nil && o.Username != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Body1) SetName(v string) {
-	o.Name = &v
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *V1WebRtcCdnServer) SetUsername(v string) {
+	o.Username = &v
 }
 
-func (o Body1) MarshalJSON() ([]byte, error) {
+// GetCredential returns the Credential field value if set, zero value otherwise.
+func (o *V1WebRtcCdnServer) GetCredential() string {
+	if o == nil || o.Credential == nil {
+		var ret string
+		return ret
+	}
+	return *o.Credential
+}
+
+// GetCredentialOk returns a tuple with the Credential field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1WebRtcCdnServer) GetCredentialOk() (*string, bool) {
+	if o == nil || o.Credential == nil {
+		return nil, false
+	}
+	return o.Credential, true
+}
+
+// HasCredential returns a boolean if a field has been set.
+func (o *V1WebRtcCdnServer) HasCredential() bool {
+	if o != nil && o.Credential != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCredential gets a reference to the given string and assigns it to the Credential field.
+func (o *V1WebRtcCdnServer) SetCredential(v string) {
+	o.Credential = &v
+}
+
+// GetUrls returns the Urls field value if set, zero value otherwise.
+func (o *V1WebRtcCdnServer) GetUrls() string {
+	if o == nil || o.Urls == nil {
+		var ret string
+		return ret
+	}
+	return *o.Urls
+}
+
+// GetUrlsOk returns a tuple with the Urls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V1WebRtcCdnServer) GetUrlsOk() (*string, bool) {
+	if o == nil || o.Urls == nil {
+		return nil, false
+	}
+	return o.Urls, true
+}
+
+// HasUrls returns a boolean if a field has been set.
+func (o *V1WebRtcCdnServer) HasUrls() bool {
+	if o != nil && o.Urls != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUrls gets a reference to the given string and assigns it to the Urls field.
+func (o *V1WebRtcCdnServer) SetUrls(v string) {
+	o.Urls = &v
+}
+
+func (o V1WebRtcCdnServer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
+	}
+	if o.Credential != nil {
+		toSerialize["credential"] = o.Credential
+	}
+	if o.Urls != nil {
+		toSerialize["urls"] = o.Urls
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableBody1 struct {
-	value *Body1
+type NullableV1WebRtcCdnServer struct {
+	value *V1WebRtcCdnServer
 	isSet bool
 }
 
-func (v NullableBody1) Get() *Body1 {
+func (v NullableV1WebRtcCdnServer) Get() *V1WebRtcCdnServer {
 	return v.value
 }
 
-func (v *NullableBody1) Set(val *Body1) {
+func (v *NullableV1WebRtcCdnServer) Set(val *V1WebRtcCdnServer) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBody1) IsSet() bool {
+func (v NullableV1WebRtcCdnServer) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBody1) Unset() {
+func (v *NullableV1WebRtcCdnServer) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBody1(val *Body1) *NullableBody1 {
-	return &NullableBody1{value: val, isSet: true}
+func NewNullableV1WebRtcCdnServer(val *V1WebRtcCdnServer) *NullableV1WebRtcCdnServer {
+	return &NullableV1WebRtcCdnServer{value: val, isSet: true}
 }
 
-func (v NullableBody1) MarshalJSON() ([]byte, error) {
+func (v NullableV1WebRtcCdnServer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBody1) UnmarshalJSON(src []byte) error {
+func (v *NullableV1WebRtcCdnServer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

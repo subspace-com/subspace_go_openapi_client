@@ -12,106 +12,182 @@ Contact: sales@subspace.com
 package subspace_openapi_client
 
 import (
-	"encoding/json"
+	"bytes"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
-// Body1 struct for Body1
-type Body1 struct {
-	// Name of PacketAccelerator
-	Name *string `json:"name,omitempty"`
+// Linger please
+var (
+	_ context.Context
+)
+
+// WebRtcCdnServiceApiService WebRtcCdnServiceApi service
+type WebRtcCdnServiceApiService service
+
+type ApiWebRtcCdnServiceGetWebRtcCdnRequest struct {
+	ctx context.Context
+	ApiService *WebRtcCdnServiceApiService
 }
 
-// NewBody1 instantiates a new Body1 object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewBody1() *Body1 {
-	this := Body1{}
-	return &this
+
+func (r ApiWebRtcCdnServiceGetWebRtcCdnRequest) Execute() (*V1WebRtcCdnResponse, *http.Response, error) {
+	return r.ApiService.WebRtcCdnServiceGetWebRtcCdnExecute(r)
 }
 
-// NewBody1WithDefaults instantiates a new Body1 object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewBody1WithDefaults() *Body1 {
-	this := Body1{}
-	return &this
-}
+/*
+WebRtcCdnServiceGetWebRtcCdn Method for WebRtcCdnServiceGetWebRtcCdn
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Body1) GetName() string {
-	if o == nil || o.Name == nil {
-		var ret string
-		return ret
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiWebRtcCdnServiceGetWebRtcCdnRequest
+*/
+func (a *WebRtcCdnServiceApiService) WebRtcCdnServiceGetWebRtcCdn(ctx context.Context) ApiWebRtcCdnServiceGetWebRtcCdnRequest {
+	return ApiWebRtcCdnServiceGetWebRtcCdnRequest{
+		ApiService: a,
+		ctx: ctx,
 	}
-	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Body1) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+// Execute executes the request
+//  @return V1WebRtcCdnResponse
+func (a *WebRtcCdnServiceApiService) WebRtcCdnServiceGetWebRtcCdnExecute(r ApiWebRtcCdnServiceGetWebRtcCdnRequest) (*V1WebRtcCdnResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *V1WebRtcCdnResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebRtcCdnServiceApiService.WebRtcCdnServiceGetWebRtcCdn")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
-	return o.Name, true
-}
 
-// HasName returns a boolean if a field has been set.
-func (o *Body1) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
+	localVarPath := localBasePath + "/v1/webrtc-cdn"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	return false
-}
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Body1) SetName(v string) {
-	o.Name = &v
-}
-
-func (o Body1) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	return json.Marshal(toSerialize)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 402 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
-
-type NullableBody1 struct {
-	value *Body1
-	isSet bool
-}
-
-func (v NullableBody1) Get() *Body1 {
-	return v.value
-}
-
-func (v *NullableBody1) Set(val *Body1) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBody1) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBody1) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBody1(val *Body1) *NullableBody1 {
-	return &NullableBody1{value: val, isSet: true}
-}
-
-func (v NullableBody1) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBody1) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
-}
-
-

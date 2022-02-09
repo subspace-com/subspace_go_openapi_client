@@ -35,8 +35,8 @@ func main() {
     idempotencyKey := "idempotencyKey_example" // string | Value is the returned etag of a get request.  If a retry sends an Idempotency-Key that has been seen before, the existing accelerator is returned with the status code of 200 (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AcceleratorServiceApi.AcceleratorServiceCreate(context.Background()).Body(body).IdempotencyKey(idempotencyKey).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AcceleratorServiceApi.AcceleratorServiceCreate(context.Background()).Body(body).IdempotencyKey(idempotencyKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AcceleratorServiceApi.AcceleratorServiceCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -100,8 +100,8 @@ func main() {
     id := "id_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AcceleratorServiceApi.AcceleratorServiceDelete(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AcceleratorServiceApi.AcceleratorServiceDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AcceleratorServiceApi.AcceleratorServiceDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -168,8 +168,8 @@ func main() {
     id := "id_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AcceleratorServiceApi.AcceleratorServiceGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AcceleratorServiceApi.AcceleratorServiceGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AcceleratorServiceApi.AcceleratorServiceGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -238,8 +238,8 @@ func main() {
     name := "name_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AcceleratorServiceApi.AcceleratorServiceList(context.Background()).Before(before).Limit(limit).Name(name).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AcceleratorServiceApi.AcceleratorServiceList(context.Background()).Before(before).Limit(limit).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AcceleratorServiceApi.AcceleratorServiceList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -306,8 +306,8 @@ func main() {
     ifMatch := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AcceleratorServiceApi.AcceleratorServiceUpdate(context.Background(), id).Body1(body1).IfMatch(ifMatch).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AcceleratorServiceApi.AcceleratorServiceUpdate(context.Background(), id).Body1(body1).IfMatch(ifMatch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AcceleratorServiceApi.AcceleratorServiceUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

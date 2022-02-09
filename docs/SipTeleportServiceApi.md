@@ -35,8 +35,8 @@ func main() {
     idempotencyKey := "idempotencyKey_example" // string | Value is the returned etag of a get request.  If a retry sends an Idempotency-Key that has been seen before, the existing teleport is returned with the status code of 200 (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SipTeleportServiceApi.SipTeleportServiceCreate(context.Background()).V1CreateSipTeleport(v1CreateSipTeleport).IdempotencyKey(idempotencyKey).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SipTeleportServiceApi.SipTeleportServiceCreate(context.Background()).V1CreateSipTeleport(v1CreateSipTeleport).IdempotencyKey(idempotencyKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SipTeleportServiceApi.SipTeleportServiceCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -100,8 +100,8 @@ func main() {
     id := "id_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SipTeleportServiceApi.SipTeleportServiceDelete(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SipTeleportServiceApi.SipTeleportServiceDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SipTeleportServiceApi.SipTeleportServiceDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -168,8 +168,8 @@ func main() {
     id := "id_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SipTeleportServiceApi.SipTeleportServiceGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SipTeleportServiceApi.SipTeleportServiceGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SipTeleportServiceApi.SipTeleportServiceGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -237,8 +237,8 @@ func main() {
     limit := int64(789) // int64 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SipTeleportServiceApi.SipTeleportServiceList(context.Background()).Before(before).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SipTeleportServiceApi.SipTeleportServiceList(context.Background()).Before(before).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SipTeleportServiceApi.SipTeleportServiceList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -303,8 +303,8 @@ func main() {
     v1UpdateSipTeleport := *openapiclient.NewV1UpdateSipTeleport("Name_example", "Destination_example", openapiclient.v1SipTeleportStatus("UNKNOWN")) // V1UpdateSipTeleport | Parameters to update an existing SIPTeleport, minimum requirement of one of them defined to update
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SipTeleportServiceApi.SipTeleportServiceUpdate(context.Background(), id).V1UpdateSipTeleport(v1UpdateSipTeleport).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SipTeleportServiceApi.SipTeleportServiceUpdate(context.Background(), id).V1UpdateSipTeleport(v1UpdateSipTeleport).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SipTeleportServiceApi.SipTeleportServiceUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
